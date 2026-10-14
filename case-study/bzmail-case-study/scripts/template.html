@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BZmail — Case Study · Email Marketing Without Limits | Sazzad Hossain</title>
+<meta name="description" content="Case study of BZmail — an email-marketing ecosystem powered by a rotating pool of Gmail SMTP servers. Public website, PWA user panel and full-control admin panel. Built by Sazzad Hossain.">
+<style>
+:root{
+  --bg0:#05070f; --bg1:#0b1024; --card:rgba(16,23,53,.72); --line:rgba(124,140,255,.16);
+  --ink:#eef1ff; --mut:#9aa5d1; --vio:#6c5cf7; --vio2:#8b7cff; --org:#ff8a2a; --teal:#2dd4bf;
+  --red:#ff5470; --grn:#3ddc84; --rad:18px;
+  --font:"Segoe UI","Inter",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg0);color:var(--ink);font-family:var(--font);overflow-x:hidden;line-height:1.55}
+::selection{background:var(--vio);color:#fff}
+img{display:block;max-width:100%}
+a{color:var(--vio2);text-decoration:none}
+
+/* ---------- backdrop ---------- */
+.bgfx{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(900px 520px at 85% -10%,rgba(108,92,247,.22),transparent 60%),
+  radial-gradient(700px 480px at -10% 30%,rgba(45,212,191,.10),transparent 60%),
+  radial-gradient(600px 400px at 70% 90%,rgba(255,138,42,.08),transparent 60%),
+  linear-gradient(180deg,var(--bg0),var(--bg1) 55%,var(--bg0));}
+.bgfx::after{content:"";position:absolute;inset:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+.orb{position:fixed;border-radius:50%;filter:blur(70px);z-index:-1;opacity:.5;pointer-events:none}
+.orb.o1{width:420px;height:420px;background:#6c5cf7;top:-140px;right:-120px;animation:drift 14s ease-in-out infinite alternate}
+.orb.o2{width:340px;height:340px;background:#14b8a6;bottom:-120px;left:-140px;animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-60px,50px,0) scale(1.15)}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:22px;
+  padding:14px clamp(16px,4vw,44px);backdrop-filter:blur(14px);background:rgba(5,7,15,.62);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.3px;color:#fff}
+.logo-img{height:38px;width:auto;display:block;filter:drop-shadow(0 4px 14px rgba(255,138,42,.28))}
+.logo .mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:15px;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,var(--org),#ff5f2a);box-shadow:0 6px 18px rgba(255,138,42,.35)}
+.logo small{color:var(--org);font-weight:900}
+.nav .links{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.nav .links a{color:var(--mut);font-size:13.5px;font-weight:600;padding:8px 13px;border-radius:10px;transition:.25s}
+.nav .links a:hover,.nav .links a.act{color:#fff;background:rgba(108,92,247,.18)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:700;font-size:14px;
+  background:linear-gradient(135deg,var(--vio),#5847d6);color:#fff;box-shadow:0 10px 26px rgba(108,92,247,.35);transition:.25s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(108,92,247,.5)}
+.btn.ghost{background:rgba(108,92,247,.12);border:1px solid rgba(139,124,255,.4);box-shadow:none;color:var(--vio2)}
+.btn.ghost:hover{background:rgba(108,92,247,.22);color:#fff}
+.btn.org{background:linear-gradient(135deg,var(--org),#ff5f2a);box-shadow:0 10px 26px rgba(255,138,42,.35)}
+.nav .btn{padding:9px 16px;font-size:13px}
+.burger{display:none;flex-direction:column;gap:4px;margin-left:auto;background:none;border:0;cursor:pointer;padding:9px;border-radius:10px}
+.burger span{width:20px;height:2px;background:#cfd6f6;border-radius:2px;transition:.3s}
+.nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ---------- sections shell ---------- */
+main{position:relative}
+section{position:relative;padding:clamp(64px,9vh,110px) clamp(18px,5vw,64px);max-width:1280px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:2.5px;color:var(--teal);text-transform:uppercase}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);border-radius:2px}
+h1{font-size:clamp(38px,5.6vw,68px);line-height:1.06;font-weight:800;letter-spacing:-1px;margin:18px 0 20px}
+h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;letter-spacing:-.6px;margin:14px 0 14px}
+.grad{background:linear-gradient(92deg,var(--vio2),var(--teal) 55%,var(--org));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:clamp(15px,1.4vw,18px);max-width:640px}
+.sec-head{margin-bottom:clamp(30px,5vh,54px)}
+.sec-head .lead{margin-top:8px}
+
+/* ---------- reveal / parallax helpers ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.plx{will-change:transform}
+
+/* ---------- hero ---------- */
+#overview{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px;padding-bottom:26px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,60px);align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+.chip{padding:9px 15px;border-radius:999px;font-size:12.5px;font-weight:700;color:#dfe4ff;background:rgba(108,92,247,.14);border:1px solid rgba(139,124,255,.35)}
+.chip.t{background:rgba(45,212,191,.12);border-color:rgba(45,212,191,.4);color:#a7f3eb}
+.chip.o{background:rgba(255,138,42,.12);border-color:rgba(255,138,42,.4);color:#ffd7b0}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.floor{position:absolute;left:-10%;right:-10%;bottom:-6%;height:52%;z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(to right,rgba(108,92,247,.18) 0 1px,transparent 1px 90px),
+             repeating-linear-gradient(to top,rgba(108,92,247,.18) 0 1px,transparent 1px 64px);
+  transform:perspective(700px) rotateX(62deg);transform-origin:top;
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.8),transparent 80%);mask-image:linear-gradient(to top,rgba(0,0,0,.8),transparent 80%)}
+
+/* 3D stage + devices */
+.stage{position:relative;min-height:500px;perspective:1400px}
+.stage-m{display:none;margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:12px;background:rgba(13,19,48,.6);backdrop-filter:blur(8px);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.stage-m img{width:100%;border-radius:14px;display:block}
+.dev{position:absolute;transition:transform .3s ease;transform-style:preserve-3d;animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{margin-top:0}50%{margin-top:-16px}}
+.s-laptop{right:0;top:70px;width:min(560px,88%);transform:rotateY(-14deg) rotateX(7deg);z-index:2;animation-delay:.4s}
+.s-phone{left:0;bottom:0;width:212px;transform:rotateY(18deg) rotateZ(-5deg);z-index:3;animation-delay:1.1s}
+.s-web{left:4%;top:-6px;width:264px;transform:rotateY(12deg) rotateZ(4deg);z-index:1;animation-delay:.2s}
+.tag3d{position:absolute;padding:8px 14px;border-radius:12px;background:rgba(11,16,36,.85);border:1px solid var(--line);
+  font-size:12px;font-weight:700;color:#cdd5ff;backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(0,0,0,.45);animation:float 6s ease-in-out infinite}
+.tag3d i{font-style:normal;margin-right:6px}
+.t1{top:16px;right:6%;color:#ffd7b0;border-color:rgba(255,138,42,.4);animation-delay:.8s}
+.t2{bottom:120px;right:-8px;color:#a7f3eb;border-color:rgba(45,212,191,.4);animation-delay:1.6s}
+.t3{top:46%;left:-14px;animation-delay:2.2s}
+
+.laptop .lid{background:#0b0e1a;border-radius:16px;padding:12px 12px 16px;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(139,124,255,.2)}
+.laptop .screen{position:relative;overflow:hidden;border-radius:8px;aspect-ratio:2.1/1;background:#fff}
+.laptop .screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transform:scale(1.03);transition:opacity .5s,transform .8s}
+.laptop .screen img.on{opacity:1;transform:none}
+.laptop .base{height:14px;border-radius:0 0 16px 16px;background:linear-gradient(#454d73,#141833);position:relative;margin:0 -26px}
+.laptop .base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:6px;background:#0b0e1a;border-radius:0 0 8px 8px}
+.phone{background:#0b0e1a;border-radius:34px;padding:10px;box-shadow:0 34px 80px rgba(0,0,0,.6),0 0 0 1px rgba(139,124,255,.25)}
+.phone .pscreen{position:relative;border-radius:25px;overflow:hidden;aspect-ratio:9/17.6;background:#1a1030}
+.phone .pscreen img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.phone .notch{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:70px;height:14px;background:#0b0e1a;border-radius:9px;z-index:2}
+.browser{background:#0b0e1a;border-radius:14px;padding:9px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(139,124,255,.2)}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:4px 6px 9px}
+.browser .bar i{width:9px;height:9px;border-radius:50%}
+.browser .bar i:nth-child(1){background:#ff5f57}.browser .bar i:nth-child(2){background:#febc2e}.browser .bar i:nth-child(3){background:#28c840}
+.browser .bar span{flex:1;margin-left:8px;font-size:10px;color:#8f9ac2;background:#1a2140;border-radius:6px;padding:4px 10px}
+.browser .bscreen{border-radius:8px;overflow:hidden;overflow-y:auto;max-height:430px;scrollbar-width:thin;scrollbar-color:var(--vio) transparent}
+.browser .bscreen::-webkit-scrollbar{width:6px}
+.browser .bscreen::-webkit-scrollbar-thumb{background:var(--vio);border-radius:3px}
+.browser .bscreen::-webkit-scrollbar-track{background:rgba(139,124,255,.08)}
+.scroll-hint{margin-top:6px;color:var(--mut);font-size:12px;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;justify-content:center;text-align:center;gap:10px}
+.scroll-hint::after{content:"";width:1px;height:34px;background:linear-gradient(var(--vio2),transparent);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+/* marquee */
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(11,16,36,.5);padding:14px 0;margin-top:16px}
+#why{padding-top:46px}
+.marquee .track{display:flex;gap:44px;width:max-content;animation:mq 26s linear infinite;font-weight:800;font-size:13px;letter-spacing:2.5px;color:#7f8ac0;white-space:nowrap}
+.marquee .track b{color:var(--org)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- why (problem -> fix) ---------- */
+.duo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.duo{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:26px;backdrop-filter:blur(10px);transition:transform .35s,box-shadow .35s,border-color .35s;overflow:hidden}
+.duo::before{content:attr(data-num);position:absolute;right:14px;top:2px;font-size:74px;font-weight:900;color:rgba(139,124,255,.10);letter-spacing:-4px}
+.duo:hover{transform:translateY(-8px) rotateX(2deg);box-shadow:0 30px 60px rgba(0,0,0,.45);border-color:rgba(139,124,255,.45)}
+.duo .ptag{font-size:10.5px;font-weight:900;letter-spacing:2px;color:var(--org)}
+.duo h3{font-size:19px;margin:8px 0 10px}
+.duo .prob,.duo .fix{border-radius:12px;padding:14px 16px;font-size:14px}
+.duo .prob{background:rgba(255,84,112,.08);border-left:3px solid var(--red);color:#ffc9d4}
+.duo .fix{background:rgba(61,220,132,.08);border-left:3px solid var(--grn);color:#c9f7de;margin-top:14px}
+.duo .prob b,.duo .fix b{display:block;font-size:11px;letter-spacing:2px;margin-bottom:5px}
+.duo .prob b{color:var(--red)}.duo .fix b{color:var(--grn)}
+.duo .arrow{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--vio),#5847d6);box-shadow:0 8px 20px rgba(108,92,247,.5);font-size:15px;color:#fff}
+
+/* flow diagram */
+.flow-wrap{margin-top:clamp(34px,6vh,60px);background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:clamp(24px,4vw,44px);backdrop-filter:blur(10px)}
+.flow{display:flex;align-items:stretch;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.fnode{flex:1;min-width:150px;background:rgba(108,92,247,.10);border:1px solid rgba(139,124,255,.35);border-radius:14px;padding:16px;text-align:center;position:relative}
+.fnode h4{font-size:14px;margin-bottom:6px}
+.fnode p{font-size:11.5px;color:var(--mut)}
+.fnode.core{background:linear-gradient(135deg,rgba(108,92,247,.35),rgba(45,212,191,.2));border-color:var(--vio2);box-shadow:0 0 40px rgba(108,92,247,.25) inset}
+.fnode .gmails{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.fnode .gmails span{font-size:11px;font-weight:700;border-radius:8px;padding:5px 8px;background:rgba(61,220,132,.12);border:1px solid rgba(61,220,132,.4);color:#c9f7de}
+.fnode .gmails span.off{background:rgba(255,84,112,.10);border-color:rgba(255,84,112,.4);color:#ffc9d4;text-decoration:line-through}
+.fpipe{align-self:center;flex:0 0 46px;height:2px;background:repeating-linear-gradient(90deg,var(--vio2) 0 8px,transparent 8px 14px);animation:pipe 1s linear infinite;position:relative}
+.fpipe::after{content:"";position:absolute;right:-3px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal)}
+@keyframes pipe{to{background-position:14px 0}}
+.flow-note{margin-top:18px;font-size:13px;color:var(--mut)}
+.flow-note b{color:var(--teal)}
+
+/* ---------- product ---------- */
+.pblock{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:clamp(60px,10vh,110px)}
+.pblock.rev{grid-template-columns:1.1fr .9fr}
+.pblock.rev .pvis{order:-1}
+.pvis{perspective:1200px}
+.pvis .tilt{transition:transform .25s ease;transform-style:preserve-3d}
+.pnum{font-size:12px;font-weight:900;letter-spacing:3px;color:var(--org)}
+.bullets{margin:18px 0 0;display:grid;gap:11px}
+.bullets li{list-style:none;display:flex;gap:11px;font-size:14.5px;color:#cfd6f6}
+.bullets li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:12px;font-weight:900;color:#04120a;background:linear-gradient(135deg,var(--grn),var(--teal));margin-top:1px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{padding:8px 15px;border-radius:10px;border:1px solid rgba(139,124,255,.35);background:rgba(108,92,247,.12);color:var(--vio2);font-weight:700;font-size:12.5px;cursor:pointer;transition:.25s;font-family:var(--font)}
+.tabs button.on{background:linear-gradient(135deg,var(--vio),#5847d6);color:#fff;box-shadow:0 8px 20px rgba(108,92,247,.4)}
+.phones{display:flex;gap:26px;justify-content:center;align-items:flex-end}
+.phones .dev{position:relative;animation-delay:.5s}
+.phones .dev:last-child{animation-delay:1.3s;transform:rotateZ(3deg) translateY(14px)}
+.phones .dev:first-child{transform:rotateZ(-4deg)}
+
+/* ---------- impact ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:clamp(34px,6vh,56px)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:26px 20px;text-align:center;backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--vio),var(--teal))}
+.stat .n{font-size:clamp(30px,3.4vw,46px);font-weight:900;letter-spacing:-1px}
+.stat .n em{font-style:normal;font-size:.55em;color:var(--vio2)}
+.stat .l{color:var(--mut);font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:6px}
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:28px;backdrop-filter:blur(10px)}
+.panel h3{font-size:18px;margin-bottom:16px}
+.solved{display:grid;gap:12px}
+.solved li{list-style:none;display:flex;gap:12px;font-size:14px;color:#dfe4ff}
+.solved li i{flex:0 0 24px;height:24px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:900;color:#04120a;background:linear-gradient(135deg,var(--grn),var(--teal))}
+.skillchips{display:flex;flex-wrap:wrap;gap:9px}
+.proj-strip{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.proj-strip b{font-size:12px;letter-spacing:2px;color:var(--mut);text-transform:uppercase;margin-right:6px}
+.proj-strip span{padding:7px 14px;border-radius:999px;border:1px dashed rgba(139,124,255,.5);font-size:12.5px;font-weight:700;color:#cdd5ff}
+.dev-card{margin-top:26px;border-radius:22px;padding:clamp(26px,4vw,40px);border:1px solid rgba(139,124,255,.35);position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(108,92,247,.22),rgba(11,16,36,.9) 45%,rgba(255,138,42,.14));backdrop-filter:blur(10px)}
+.dev-card .row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.avatar{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;font-size:30px;font-weight:900;color:#fff;
+  background:linear-gradient(135deg,var(--vio),var(--org));box-shadow:0 18px 40px rgba(108,92,247,.4);transform:rotate(-4deg)}
+.dev-card h3{font-size:24px}
+.dev-card .role{color:var(--org);font-weight:700;font-size:13.5px;letter-spacing:1px;text-transform:uppercase}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.socials a{padding:9px 16px;border-radius:11px;background:rgba(5,7,15,.55);border:1px solid var(--line);color:#cfd6f6;font-size:12.5px;font-weight:700;transition:.25s}
+.socials a:hover{border-color:var(--vio2);color:#fff;transform:translateY(-3px)}
+footer{padding:34px clamp(18px,5vw,64px);text-align:center;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+footer b{color:var(--vio2)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .hero-grid,.pblock,.pblock.rev,.two-col{grid-template-columns:1fr}
+  .pblock.rev .pvis{order:0}
+  .duo-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stage{display:none}
+  .stage-m{display:block}
+  .dev{position:relative;inset:auto;animation:none}
+  .s-laptop{flex:1 1 100%;width:100%;transform:none}
+  .s-web{flex:1 1 330px;width:auto;transform:none}
+  .s-phone{flex:0 1 210px;width:auto;transform:none;align-self:center}
+  .browser .bscreen{max-height:340px}
+  .tag3d{display:none}
+  .pblock{margin-bottom:64px}
+}
+@media (max-width:920px){
+  section{padding-left:22px;padding-right:22px}
+  .duo{padding:22px}
+  .stats{gap:14px}
+  .flow{gap:10px}
+  .pblock{gap:26px}
+}
+@media (max-width:768px){
+  section{padding:56px 16px}
+  #overview{padding-top:92px;min-height:auto}
+  .nav .links{position:fixed;top:66px;left:14px;right:14px;margin:0;display:none;flex-direction:column;background:rgba(7,10,22,.97);border:1px solid var(--line);border-radius:16px;padding:12px;backdrop-filter:blur(14px);box-shadow:0 24px 60px rgba(0,0,0,.5);z-index:60}
+  .nav.open .links{display:flex}
+  .nav .links a{padding:12px 14px;font-size:15px}
+  .burger{display:flex}
+  .laptop .screen{aspect-ratio:1.5/1}
+  .laptop .screen img{object-position:top center}
+  .browser .bscreen{max-height:300px}
+  .phones{gap:14px}
+  .phones .dev{flex:0 1 200px}
+  .marquee .track{font-size:11.5px;gap:26px}
+  .scroll-hint{margin-top:14px}
+  .sec-head{margin-bottom:30px}
+}
+@media (max-width:560px){
+  section{padding:48px 14px}
+  .stats{grid-template-columns:1fr}
+  .s-phone{flex-basis:180px}
+  .cta-row .btn{flex:1 1 100%;justify-content:center}
+  .duo{padding:18px}
+  .duo::before{font-size:56px}
+  .fpipe{flex-basis:22px}
+  .fnode{min-width:130px;padding:12px}
+  .phones .dev{flex:0 1 160px}
+  .panel{padding:20px}
+  .avatar{width:64px;height:64px;border-radius:18px;font-size:24px}
+  .socials a{font-size:11.5px;padding:8px 12px}
+  .flow-wrap{padding:20px}
+}
+@media (max-width:420px){
+  section{padding:44px 12px}
+  .logo{font-size:16px}
+  .logo-img{height:30px}
+  .logo .mark{width:32px;height:32px;font-size:13px;border-radius:9px}
+  .nav .btn{padding:8px 12px;font-size:12px}
+  .lead{font-size:14px}
+  .chips .chip{font-size:11px;padding:7px 11px}
+  .tabs button{font-size:11px;padding:7px 10px}
+  .bullets li{font-size:13px}
+  .stat{padding:18px 12px}
+  .s-web{flex-basis:100%}
+  .phones .dev{flex:0 1 140px}
+  .browser .bscreen{max-height:260px}
+  .duo h3{font-size:17px}
+  .duo .prob,.duo .fix{font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+<div class="orb o1"></div><div class="orb o2"></div>
+
+<header class="nav">
+  <a class="logo" href="#overview" aria-label="BZmail — back to top"><img class="logo-img" src="__IMG_logo__" alt="BZmail"></a>
+  <nav class="links">
+    <a href="#overview" class="act">Overview</a>
+    <a href="#why">Why BZmail</a>
+    <a href="#product">Product</a>
+    <a href="#impact">Impact</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="btn" href="https://bzmail.uk/" target="_blank" rel="noopener">Live Demo ↗</a>
+</header>
+
+<main>
+<!-- ============ SECTION 1 · OVERVIEW ============ -->
+<section id="overview">
+  <div class="floor"></div>
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow rv">Full-stack case study · 2026</span>
+      <h1 class="rv">Email marketing,<br><span class="grad">without limits.</span></h1>
+      <p class="lead rv">BZmail turns a pool of ordinary Gmail SMTP accounts into an <b style="color:#fff">unlimited sending engine</b> — wrapped in three polished surfaces: a public website, an installable <b style="color:#fff">PWA user panel</b>, and a full-control <b style="color:#fff">admin panel</b>.</p>
+      <div class="chips rv">
+        <span class="chip o">∞ scale · multi-Gmail SMTP rotation</span>
+        <span class="chip t">0% bounce tracked</span>
+        <span class="chip">44% open · 44% click</span>
+        <span class="chip">Web + PWA + Admin</span>
+      </div>
+      <div class="cta-row rv">
+        <a class="btn" href="https://bzmail.uk/" target="_blank" rel="noopener">🌐 Live demo — bzmail.uk</a>
+      </div>
+    </div>
+
+    <div class="stage rv" id="stage">
+      <div class="dev s-web plx" data-plx="0.06">
+        <div class="browser tilt"><div class="bar"><i></i><i></i><i></i><span>https://bzmail.uk</span></div>
+          <div class="bscreen"><img src="__IMG_web__" alt="BZmail public website"></div></div>
+      </div>
+      <div class="dev s-laptop plx" data-plx="0.03">
+        <div class="laptop tilt"><div class="lid"><div class="screen"><img class="on" src="__IMG_dash__" alt="BZmail admin dashboard"></div></div><div class="base"></div></div>
+      </div>
+      <div class="dev s-phone plx" data-plx="0.09">
+        <div class="phone tilt"><div class="pscreen"><span class="notch"></span><img src="__IMG_login__" alt="BZmail PWA guest login"></div></div>
+      </div>
+      <span class="tag3d t1"><i>⚙️</i>Gmail SMTP · 587</span>
+      <span class="tag3d t2"><i>📈</i>Open / Click / Bounce tracking</span>
+      <span class="tag3d t3"><i>🧩</i>Multi-tenant projects</span>
+    </div>
+    <div class="stage-m rv"><img src="__IMG_combo__" alt="BZmail on every screen — website, admin panel and PWA user panel"></div>
+  </div>
+  <div class="scroll-hint rv">Scroll to explore</div>
+</section>
+
+<div class="marquee"><div class="track">
+  <span>MULTI-SMTP ROTATION <b>✦</b> PWA USER PANEL <b>✦</b> ADMIN CONTROL ROOM <b>✦</b> OPEN / CLICK / BOUNCE TRACKING <b>✦</b> COPY · EXCEL · PDF EXPORTS <b>✦</b> LTR + RTL THEME ENGINE <b>✦</b> GMAIL SMTP : 587 <b>✦</b> MULTI-TENANT PROJECTS <b>✦</b>&nbsp;</span>
+  <span>MULTI-SMTP ROTATION <b>✦</b> PWA USER PANEL <b>✦</b> ADMIN CONTROL ROOM <b>✦</b> OPEN / CLICK / BOUNCE TRACKING <b>✦</b> COPY · EXCEL · PDF EXPORTS <b>✦</b> LTR + RTL THEME ENGINE <b>✦</b> GMAIL SMTP : 587 <b>✦</b> MULTI-TENANT PROJECTS <b>✦</b>&nbsp;</span>
+</div></div>
+
+<!-- ============ SECTION 2 · WHY ============ -->
+<section id="why">
+  <div class="sec-head">
+    <span class="eyebrow rv">Section 02 · The why</span>
+    <h2 class="rv">Why BZmail <span class="grad">exists</span></h2>
+    <p class="lead rv">One Gmail account can’t run real email marketing. BZmail was designed as three connected surfaces — engine, admin room and user panel — so owners, teams and customers each get exactly what they need.</p>
+  </div>
+
+  <div class="duo-grid">
+    <div class="duo rv" data-num="01"><span class="ptag">WHY THE ENGINE</span>
+      <h3>Gmail’s hard sending caps</h3>
+      <div class="prob"><b>THE PROBLEM</b>Gmail caps every free account at ~500 emails/day, then blocks it. A single sender can never scale a real campaign.</div>
+      <div class="fix"><b>THE BZMAIL FIX</b>A rotating pool of Gmail SMTP servers (smtp.gmail.com : 587) with per-server Active toggles and instant failover — volume now has no ceiling.</div>
+      <span class="arrow">↓</span>
+    </div>
+    <div class="duo rv" data-num="02"><span class="ptag">WHY THE ADMIN PANEL</span>
+      <h3>Owners were flying blind</h3>
+      <div class="prob"><b>THE PROBLEM</b>Spreadsheets, scattered scripts and separate tools — zero visibility over users, servers, campaigns and results.</div>
+      <div class="fix"><b>THE BZMAIL FIX</b>One admin control room: users, guests, servers, projects, campaigns, templates, live analytics and Copy / Excel / PDF exports.</div>
+      <span class="arrow">↓</span>
+    </div>
+    <div class="duo rv" data-num="03"><span class="ptag">WHY THE USER PANEL (PWA)</span>
+      <h3>Customers on any device</h3>
+      <div class="prob"><b>THE PROBLEM</b>End-users needed access from any phone with no app-store installs and no clunky legacy interfaces.</div>
+      <div class="fix"><b>THE BZMAIL FIX</b>An installable PWA with guest login &amp; registration and a high-UX, iconic dark-glass interface that feels native everywhere.</div>
+      <span class="arrow">↓</span>
+    </div>
+    <div class="duo rv" data-num="04"><span class="ptag">WHY THE IMPACT</span>
+      <h3>Sending blind burns domains</h3>
+      <div class="prob"><b>THE PROBLEM</b>No opens, no clicks, no bounce data — lists decay, reputations burn, money disappears.</div>
+      <div class="fix"><b>THE BZMAIL FIX</b>Real tracking on everything: open / click / bounce rates, fail-lists and don’t-try lists keep campaigns measurable and domains safe.</div>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+
+  <div class="flow-wrap rv">
+    <div class="flow">
+      <div class="fnode"><h4>📨 Campaign queue</h4><p>Templates + email groups ready to fire</p></div>
+      <div class="fpipe"></div>
+      <div class="fnode core"><h4>⚡ Rotation engine</h4><p>Picks the next healthy Gmail, spreads the load</p></div>
+      <div class="fpipe"></div>
+      <div class="fnode"><h4>🧩 Gmail SMTP pool</h4>
+        <div class="gmails"><span>bcet1 · Active</span><span>server-02 · Active</span><span class="off">server-03 · limit hit</span><span>+ N more…</span></div>
+      </div>
+      <div class="fpipe"></div>
+      <div class="fnode"><h4>✅ Delivered inbox</h4><p>Tracked opens, clicks &amp; bounces</p></div>
+    </div>
+    <p class="flow-note">If a server bounces or hits its daily limit it flips to <b>Disabled</b> and traffic auto-routes to the next healthy Gmail — <b>campaigns never stop.</b></p>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 · PRODUCT ============ -->
+<section id="product">
+  <div class="sec-head">
+    <span class="eyebrow rv">Section 03 · The product</span>
+    <h2 class="rv">One product, <span class="grad">three surfaces</span></h2>
+    <p class="lead rv">Every screen below is real product UI — explore the public website, the admin control room and the PWA user panel.</p>
+  </div>
+
+  <!-- website -->
+  <div class="pblock">
+    <div class="rv">
+      <span class="pnum">SURFACE A</span>
+      <h2 style="font-size:clamp(24px,2.6vw,34px)">Public website — the storefront</h2>
+      <p class="lead">A dark, conversion-focused landing experience that sells the promise in seconds: personalization, no-limit sending and a full marketing funnel.</p>
+      <ul class="bullets">
+        <li>Hero + funnel storytelling with pricing tiers for every business size</li>
+        <li>Entry points for Sign&nbsp;up, Contact and instant Send&nbsp;Mail</li>
+        <li>Testimonials, feature deep-dives and a fully responsive layout</li>
+      </ul>
+    </div>
+    <div class="pvis rv"><div class="browser tilt"><div class="bar"><i></i><i></i><i></i><span>https://bzmail.uk</span></div>
+      <div class="bscreen"><img src="__IMG_web__" alt="BZmail marketing website"></div></div></div>
+  </div>
+
+  <!-- admin -->
+  <div class="pblock rev">
+    <div class="rv">
+      <span class="pnum">SURFACE B</span>
+      <h2 style="font-size:clamp(24px,2.6vw,34px)">Admin panel — the control room</h2>
+      <p class="lead">Everything an operator needs, in one place. Tap the tabs on the laptop to walk through the real modules.</p>
+      <ul class="bullets">
+        <li>Live KPI cards: open rate, click rate, bounce rate, campaigns</li>
+        <li>SMTP server cards with Active failover toggles &amp; guest servers</li>
+        <li>Users, guests, projects &amp; campaigns with Copy / Excel / PDF export</li>
+        <li>Theme engine: light / dark / gradient menus &amp; headers, LTR + RTL</li>
+      </ul>
+      <div class="tabs" id="admintabs" style="margin-top:20px">
+        <button class="on" data-img="0">Dashboard</button>
+        <button data-img="1">Servers</button>
+        <button data-img="2">Users</button>
+        <button data-img="3">Campaigns</button>
+        <button data-img="4">Templates</button>
+      </div>
+    </div>
+    <div class="pvis rv">
+      <div class="laptop tilt"><div class="lid"><div class="screen" id="adminscreen">
+        <img class="on" src="__IMG_dash__" alt="Admin dashboard">
+        <img src="__IMG_servers__" alt="Admin servers">
+        <img src="__IMG_users__" alt="Admin users">
+        <img src="__IMG_campaigns__" alt="Admin campaigns">
+        <img src="__IMG_templates__" alt="Admin templates">
+      </div></div><div class="base"></div></div>
+    </div>
+  </div>
+
+  <!-- pwa -->
+  <div class="pblock">
+    <div class="rv">
+      <span class="pnum">SURFACE C</span>
+      <h2 style="font-size:clamp(24px,2.6vw,34px)">User panel — installable PWA</h2>
+      <p class="lead">A modern, iconic mobile experience. Guests sign in or register in seconds and the app installs straight from the browser — no app store needed.</p>
+      <ul class="bullets">
+        <li>Guest login + one-tap registration flows</li>
+        <li>High-UX dark-glass UI with gradient stage and tactile inputs</li>
+        <li>Installable, offline-friendly, fast on any device</li>
+      </ul>
+    </div>
+    <div class="pvis rv"><div class="phones">
+      <div class="dev"><div class="phone tilt"><div class="pscreen"><span class="notch"></span><img src="__IMG_login__" alt="PWA guest login screen"></div></div></div>
+      <div class="dev"><div class="phone tilt"><div class="pscreen"><span class="notch"></span><img src="__IMG_register__" alt="PWA guest registration screen"></div></div></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 · IMPACT ============ -->
+<section id="impact">
+  <div class="sec-head">
+    <span class="eyebrow rv">Section 04 · Impact &amp; results</span>
+    <h2 class="rv">Problems solved, <span class="grad">numbers that show it</span></h2>
+    <p class="lead rv">Live figures from the BZmail dashboard and campaign logs — the proof behind the promise.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat rv"><div class="n"><span data-count="90">0</span><em>%</em></div><div class="l">Delivery success · 9/10 test run, 0 fail</div></div>
+    <div class="stat rv"><div class="n"><span data-count="0">0</span><em>%</em></div><div class="l">Bounce rate, tracked live</div></div>
+    <div class="stat rv"><div class="n"><span data-count="44">0</span><em>%</em></div><div class="l">Open &amp; click rate</div></div>
+    <div class="stat rv"><div class="n"><span data-count="4">0</span><em>+</em></div><div class="l">Projects onboarded</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel rv">
+      <h3>✅ What BZmail solved</h3>
+      <ul class="solved">
+        <li><i>✓</i>Removed Gmail’s 500-emails/day wall with multi-SMTP rotation</li>
+        <li><i>✓</i>Zero-downtime sending via auto failover + per-server Active toggles</li>
+        <li><i>✓</i>Full visibility: opens, clicks, bounces, fail-lists &amp; don’t-try lists</li>
+        <li><i>✓</i>One admin room for users, guests, servers, projects &amp; templates</li>
+        <li><i>✓</i>Any-device access through an installable, modern PWA</li>
+        <li><i>✓</i>One-click reporting with Copy / Excel / PDF exports everywhere</li>
+      </ul>
+      <div class="proj-strip"><b>Projects live on BZmail</b><span>BCET</span><span>MotionUk</span><span>PPA</span><span>DMGD</span></div>
+    </div>
+    <div class="panel rv">
+      <h3>🛠 Skills &amp; stack demonstrated</h3>
+      <div class="skillchips">
+        <span class="chip">PWA architecture</span><span class="chip t">UX / UI design</span>
+        <span class="chip o">SMTP integration · TLS 587</span><span class="chip">Dashboard engineering</span>
+        <span class="chip t">Campaign analytics</span><span class="chip">Multi-tenant admin</span>
+        <span class="chip o">Theme engine · LTR/RTL</span><span class="chip">DataTables &amp; exports</span>
+        <span class="chip t">Responsive front-end</span><span class="chip">Performance tuning</span>
+      </div>
+      <div class="dev-card" style="margin-top:24px">
+        <div class="row">
+          <div class="avatar">SH</div>
+          <div>
+            <h3>Sazzad Hossain</h3>
+            <div class="role">Full-Stack Web Developer · @developersazzad</div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/developersazzad" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a href="https://linkedin.com/in/developer-sazzad" target="_blank" rel="noopener">💼 LinkedIn</a>
+          <a href="https://fb.com/developersazzad" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://wa.me/8801877856951" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a href="https://youtube.com/@sazzadhossain01" target="_blank" rel="noopener">▶️ YouTube</a>
+          <a href="http://sazzad.wedevspro.com" target="_blank" rel="noopener">🌐 Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>BZmail Case Study — designed &amp; built by <b>Sazzad Hossain</b> · Live demo: <a href="https://bzmail.uk/" target="_blank" rel="noopener">bzmail.uk</a> · © 2026</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+  /* scroll parallax */
+  var plx=[].slice.call(document.querySelectorAll('[data-plx]'));
+  function onScroll(){var y=window.scrollY;plx.forEach(function(el){var s=parseFloat(el.getAttribute('data-plx'));el.style.translate='0 '+(-y*s)+'px';});}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* pointer tilt (3D) */
+  document.querySelectorAll('.tilt').forEach(function(el){
+    el.addEventListener('pointermove',function(ev){
+      var r=el.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;
+      el.style.transform='rotateX('+(-y*7)+'deg) rotateY('+(x*9)+'deg)';
+    });
+    el.addEventListener('pointerleave',function(){el.style.transform='';});
+  });
+
+  /* admin laptop tabs */
+  var tabs=document.getElementById('admintabs'),scr=document.getElementById('adminscreen');
+  if(tabs&&scr){
+    var imgs=scr.querySelectorAll('img');
+    tabs.addEventListener('click',function(ev){
+      var b=ev.target.closest('button');if(!b)return;
+      tabs.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b);});
+      imgs.forEach(function(im,i){im.classList.toggle('on',i===+b.getAttribute('data-img'));});
+    });
+  }
+
+  /* counters */
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,end=+el.getAttribute('data-count'),t0=null;
+    function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  });},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+
+  /* nav active state */
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  var links=[].slice.call(document.querySelectorAll('.nav .links a'));
+  var nio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id);});}
+  });},{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(function(s){nio.observe(s);});
+
+  /* mobile menu */
+  var navEl=document.querySelector('.nav'),burger=document.getElementById('burger');
+  if(burger){
+    burger.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=navEl.classList.toggle('open');
+      burger.setAttribute('aria-expanded',open?'true':'false');
+    });
+    document.querySelector('.nav .links').addEventListener('click',function(){navEl.classList.remove('open');burger.setAttribute('aria-expanded','false');});
+    document.addEventListener('click',function(e){if(!navEl.contains(e.target))navEl.classList.remove('open');});
+  }
+})();
+</script>
+</body>
+</html>
+

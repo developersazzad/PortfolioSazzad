@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "name": "Digilibrary",
+    "tagline": "Digital Library & e-Repository Management System",
+    "client": "Brit College of Engineering & Technology (BCET)",
+    "author": "developersazzad",
+    "year": "2024",
+    "stack": ["PHP", "JavaScript + AJAX", "MySQL", "Firebase", "SMTP"]
+  },
+  "stats": [
+    { "value": 3, "dec": 0, "suffix": "", "label": "eBooks / PDFs hosted", "note": "27.67 MB managed" },
+    { "value": 4, "dec": 0, "suffix": "", "label": "Student accounts", "note": "role-based login" },
+    { "value": 2, "dec": 0, "suffix": "", "label": "Staff accounts", "note": "custom permission badges" },
+    { "value": 4, "dec": 0, "suffix": "", "label": "Book categories", "note": "Masters, BSc, Honours, MSc" },
+    { "value": 12, "dec": 0, "suffix": "", "label": "AJAX endpoints", "note": "zero full-page reloads" },
+    { "value": 27.67, "dec": 2, "suffix": " MB", "label": "Library size at launch", "note": "streamed, not bulk-downloaded" }
+  ],
+  "gallery": [
+    { "img": "01-admin-dashboard", "tag": "Admin", "title": "Admin Dashboard", "cap": "Live counters for PDFs, students, staff, categories, online students & today's open books — all fetched over AJAX." },
+    { "img": "02-ebooks-management", "tag": "Admin", "title": "eBook / PDF Manager", "cap": "Server-side DataTables: cover, book info, category, status, host state and instant AJAX search." },
+    { "img": "03-students", "tag": "Admin", "title": "Student Management", "cap": "Create, edit, activate, mail and monitor every student — with activity trail and export (Copy / Excel / PDF)." },
+    { "img": "04-staffs-permissions", "tag": "Admin", "title": "Staff & Permission Badges", "cap": "Granular rights per staff member: create_student, edit_student, create_book, edit_book, mail_student — toggled live." },
+    { "img": "05-categories", "tag": "Admin", "title": "Category Control", "cap": "One-click CRUD for shelf categories with status and last-update timestamps." },
+    { "img": "06-theme-settings", "tag": "System", "title": "Theme & SMTP Settings", "cap": "Light / color / dark / gradient skins for sidebar & header, transparent bg-image styles, plus the SMTP mail panel." },
+    { "img": "07-student-dashboard", "tag": "Student", "title": "Student Dashboard", "cap": "Shelf size meter, file cards with cover preview, favorite (heart) and read (eye) actions, book-request & mail buttons." },
+    { "img": "08-landing-login", "tag": "Public", "title": "Public Landing + Login", "cap": "Marketing hero for BCET, glassmorphism login over a 3D mountain scene, role-aware authentication." },
+    { "img": "09-dark-dashboard", "tag": "System", "title": "Dark Mode Admin", "cap": "Full dark skin with the SMTP configuration panel open — host, port, mail, app-password saved via AJAX." }
+  ],
+  "books": [
+    { "title": "Anxious Attachment", "author": "Seb Kira", "cat": "Masters", "year": 2009, "size": "13.79 MB" },
+    { "title": "Fundamental Analysis Essentials", "author": "JN Islam", "cat": "Masters", "year": 2005, "size": "3.04 MB" },
+    { "title": "Essential Anxious Attachment Style", "author": "Mr Nalsen", "cat": "Honours 1st Year", "year": 2011, "size": "10.84 MB" }
+  ]
+}

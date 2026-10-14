@@ -1,0 +1,274 @@
+# AWIN SYSTEM ARCHITECTURE & CASE STUDY ANALYSIS
+*Comprehensive System Mapping & Image Analysis Report*
+
+---
+
+## 1. HIGH-LEVEL WORKFLOW ARCHITECTURE
+*(Conceptualized based on core system logic and API bridging)*
+
+The AWIN ecosystem operates on a highly decentralized, microservice-inspired architecture. The workflow is divided into three primary operational loops:
+1. **Acquisition & Onboarding (Website):** Users land on the dynamically CMS-driven public website. They review live packages and are funneled into the PWA.
+2. **Engagement & Transactions (PWA):** Once authenticated via the API-driven PWA, users deposit funds (handled asynchronously). They browse Regular or EXP (Special) packages, select numbers (e.g., 6/7 limit logic), and execute ticket purchases. The API strictly validates wallet balances and records transactions without allowing direct DB access.
+3. **Control & Resolution (Admin Panel):** Administrators monitor the financial queue (approving Top-ups and Withdrawals via `balance_data`). The algorithmic engine runs either manually or via Cron to evaluate winning sequences. Post-draw, the Admin publishes the results, instantly pushing updates via API to the PWA and dispatching omnichannel notifications (WhatsApp/Email/SMS).
+
+---
+
+## 2. PUBLIC WEBSITE FRONTEND (1 Image)
+
+### 1. `Landing_Website.png`
+* **Target Page:** `website/index.php` (Public Landing URL)
+* **System Functionality:** This is the public-facing acquisition portal. It relies on a Headless CMS approach, utilizing the `get.php` API endpoint to fetch dynamic hero images, marquees, and package previews directly from the Admin Panel. It ensures high SEO visibility while remaining decoupled from the secure transaction engine.
+
+---
+
+## 3. USER PANEL (PWA) ECOSYSTEM (35 Images)
+*The PWA operates entirely on asynchronous JavaScript `fetch()` calls, communicating securely with the `api/v1/` backend.*
+
+### 1. `1_to_5_pakage_details_pwa.png`
+* **Target Page:** `pwa/exp_package.php`
+* **System Functionality:** Handles the specific UI for EXP packages limited to 1-5 number selections, ensuring algorithmic validation before checkout.
+
+### 2. `aftet_checkout_pwa.png`
+* **Target Page:** `pwa/checkout.php` (Success State)
+* **System Functionality:** The confirmation screen post-purchase, rendering the transaction success details and allowing users to view or download their ticket PDF receipt.
+
+### 3. `all_tickets_list_pwa.png`
+* **Target Page:** `pwa/tickets.php`
+* **System Functionality:** A centralized dashboard for users to view their active and past tickets, complete with dynamic API status tracking (Pending, Won, Lost).
+
+### 4. `check_tickets_status_pwa.png`
+* **Target Page:** `pwa/tickets.php` (Status Modal)
+* **System Functionality:** Allows users to check if their specific ticket numbers mapped correctly against the algorithmic winning numbers.
+
+### 5. `check_tickets_use_id_pwa.png`
+* **Target Page:** `pwa/scan.php` or `pwa/activity.php`
+* **System Functionality:** A robust search functionality where users can input a unique Ticket ID to instantly pull its cryptographic status and receipt from the API.
+
+### 6. `drow_pakage_tickets_details_pwa.png`
+* **Target Page:** `pwa/buy_ticket.php`
+* **System Functionality:** Displays the intricate details (price, prize, draw date) of a standard lottery package before the user commits to a transaction.
+
+### 7. `dynamic_result_page_pwa.png`
+* **Target Page:** `pwa/results.php`
+* **System Functionality:** Fetches the latest draw outcomes from the Admin API and renders the winning algorithmic numbers in real-time.
+
+### 8. `email_notification_pwa.png`
+* **Target Page:** `pwa/profile.php` (Triggered via `api/v1/mailer/`)
+* **System Functionality:** Represents the automated SMTP trigger (via PHPMailer) sending OTPs or transaction receipts directly to the user's registered email.
+
+### 9. `home_pwa.png`
+* **Target Page:** `pwa/index.php` (User Dashboard)
+* **System Functionality:** The main hub of the PWA, showing user balance, quick navigation icons, and active package loops fetched via AJAX.
+
+### 10. `home_theme_change_pwa.png`
+* **Target Page:** `pwa/template/header.php`
+* **System Functionality:** The dark/light mode toggle feature, offering a customized UX by swapping CSS variables dynamically within the DOM.
+
+### 11. `live_chat_pwa.png`
+* **Target Page:** `pwa/support.php` 
+* **System Functionality:** Customer support integration allowing real-time communication between players and platform administrators.
+
+### 12. `menu_sidebar_pwa.png`
+* **Target Page:** `pwa/template/sidebar.php`
+* **System Functionality:** The off-canvas mobile navigation menu, providing quick, touch-friendly access to Wallet, Profile, Activity, and Settings.
+
+### 13. `mobile_bottom_nav_change_color_pwa.png`
+* **Target Page:** `pwa/template/footer.php`
+* **System Functionality:** Highlights the active state of the bottom navigation bar, a critical UX pattern reflecting the user's current route.
+
+### 14. `mobile_bottom_nav_pwa.png`
+* **Target Page:** `pwa/template/footer.php`
+* **System Functionality:** The fixed bottom navigation bar mimicking native iOS/Android behavior for instantaneous routing.
+
+### 15. `notification_page_pwa.png`
+* **Target Page:** `pwa/notifications.php`
+* **System Functionality:** A real-time feed fetching global alerts, individual transaction updates, and win announcements from the notifications database table.
+
+### 16. `overlay_pwa.png`
+* **Target Page:** Global UI CSS Component
+* **System Functionality:** The loading state or modal backdrop that prevents accidental multi-clicks/double-spending during critical API POST operations.
+
+### 17. `pakage_details_pwa.png`
+* **Target Page:** `pwa/package_info.php`
+* **System Functionality:** Comprehensive view of a package's rules, prize distribution matrix, and expiration countdown timer.
+
+### 18. `public_tracking_link_pwa.png`
+* **Target Page:** `pwa/track.php?id=...`
+* **System Functionality:** A publicly shareable URL generated for each ticket, allowing third-party verification of ticket validity without requiring authentication.
+
+### 19. `regular_pakage_pwa.png`
+* **Target Page:** `pwa/index.php` (Package Loop)
+* **System Functionality:** The UI card component for standard lottery packages displaying the dynamic price and quick "Buy Now" CTA.
+
+### 20. `Scan_qr_check_result_pwa.png`
+* **Target Page:** `pwa/scan.php`
+* **System Functionality:** Integrates HTML5-QRCode to leverage the device camera, allowing users to scan a physical or digital ticket QR to instantly check win status.
+
+### 21. `sidebar_change_admin_in_pwa.png`
+* **Target Page:** `pwa/template/sidebar.php`
+* **System Functionality:** Conditional rendering logic (RBAC) that displays administrative or merchant-specific menu items only when an elevated role is authenticated.
+
+### 22. `spical_pakage_details_pwa.png`
+* **Target Page:** `pwa/exp_package.php`
+* **System Functionality:** The detailed view for EXP (Special) packages, highlighting the unique segmented pricing and variable limit rules.
+
+### 23. `spical_pakage_dynamic_info_pwa.png`
+* **Target Page:** `pwa/exp_package.php` (AJAX dynamic load)
+* **System Functionality:** Dynamic DOM updates showing specific segment constraints (e.g., limit 6 vs limit 7) based on real-time API data injection.
+
+### 24. `spical_pakage_ecom_pwa.png`
+* **Target Page:** `pwa/exp_package.php`
+* **System Functionality:** E-commerce style layout for special packages, handling cart-like logic for multi-ticket selections.
+
+### 25. `tickets_checkout_pwa.png`
+* **Target Page:** `pwa/checkout.php`
+* **System Functionality:** The critical financial gateway where API validates wallet balances against total cart value before confirming the ticket entry to the DB.
+
+### 26. `tickets_lose_pwa.png`
+* **Target Page:** `pwa/tickets.php` (Lost State)
+* **System Functionality:** The UI representation of an unsuccessful ticket, ensuring transparent communication of draw results to the user.
+
+### 27. `tickets_order_sammery_marcent_user_pwa.png`
+* **Target Page:** `pwa/receipt.php`
+* **System Functionality:** Detailed order summary designed for Merchants to provide physical or digital proof of purchase to their localized sub-users.
+
+### 28. `tickets_qr_code_pwa.png`
+* **Target Page:** `pwa/receipt.php`
+* **System Functionality:** Dynamic generation of a unique QR code embedded in the ticket receipt for rapid authenticity scanning.
+
+### 29. `tickets_win_list_pwa.png`
+* **Target Page:** `pwa/winners.php`
+* **System Functionality:** A publicly accessible leaderboard displaying recent platform winners to build trust and drive user acquisition.
+
+### 30. `top_up_history_pwa.png`
+* **Target Page:** `pwa/balance_history.php`
+* **System Functionality:** Financial ledger for the user, listing all past deposits along with their approval status (Pending/Approved/Rejected).
+
+### 31. `top_up_page_pwa.png`
+* **Target Page:** `pwa/topup.php`
+* **System Functionality:** The deposit interface mapping active payment gateways, collecting transaction IDs (TrxID) and proof screenshots for admin review.
+
+### 32. `transection_history_pwa.png`
+* **Target Page:** `pwa/activity.php`
+* **System Functionality:** Comprehensive audit trail of all financial movements (purchases, top-ups, withdrawals, merchant transfers) linked to the user account.
+
+### 33. `user_activity_page_pwa.png`
+* **Target Page:** `pwa/activity.php`
+* **System Functionality:** A timeline view tracking non-financial actions like login history, profile updates, and password changes for security transparency.
+
+### 34. `user_profile_pwa.png`
+* **Target Page:** `pwa/profile.php`
+* **System Functionality:** Profile management hub where users can update avatars, passwords, and view their total cumulative statistics.
+
+### 35. `withdrow_history_pwa.png`
+* **Target Page:** `pwa/withdraw_history.php`
+* **System Functionality:** Displays the status of payout requests, fetching data directly from the `balance_data` table via the API.
+
+---
+
+## 4. ADMIN COMMAND CENTER (26 Images)
+*The highly privileged backend driving the logic, CMS, and financial approvals.*
+
+### 1. `admin_panel_dark.png`
+* **Target Page:** `index.php` (Theme Controller)
+* **System Functionality:** Night mode CSS configuration for comfortable long-term administrative use.
+
+### 2. `Admin_panel_white.png`
+* **Target Page:** `index.php` (Theme Controller)
+* **System Functionality:** Default day mode UI for high contrast readability.
+
+### 3. `admin_topup_requests.png`
+* **Target Page:** `topup_requests.php`
+* **System Functionality:** Financial approval queue where admins verify TrxIDs against bank statements and credit user wallets.
+
+### 4. `agents_admin.png`
+* **Target Page:** `marcents.php`
+* **System Functionality:** CRM for managing merchant hierarchies, assigning credit limits, and reviewing agent performance.
+
+### 5. `all_tickets_admin.png`
+* **Target Page:** `tickets.php`
+* **System Functionality:** Master database view of all generated tickets, searchable by User ID, Ticket ID, or Package logic.
+
+### 6. `arohidraw.com_notifications_history.png`
+* **Target Page:** `notifications_history.php`
+* **System Functionality:** Audit log of all dispatched system alerts (WhatsApp, SMS, Email) to ensure delivery compliance.
+
+### 7. `arohidraw.com_reports-old.png`
+* **Target Page:** `reports-old.php`
+* **System Functionality:** Legacy analytics module tracking historical sales data and ROI calculations.
+
+### 8. `arohidraw.com_whatsapp_vps (1).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Managing the active connection state of the automated WhatsApp Node.js daemon.
+
+### 9. `arohidraw.com_whatsapp_vps (2).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Displaying the QR code required to securely link the platform to a WhatsApp business number.
+
+### 10. `arohidraw.com_whatsapp_vps (3).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Interface for constructing and dispatching bulk promotional messages to user segments.
+
+### 11. `arohidraw.com_whatsapp_vps (4).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Live chat interface mirroring the daemon's active conversations.
+
+### 12. `arohidraw.com_whatsapp_vps (5).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Configuration settings for auto-reply bots and keyword triggers.
+
+### 13. `arohidraw.com_whatsapp_vps (6).png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Diagnostic logs detailing the success/failure rate of automated API message deliveries.
+
+### 14. `arohidraw.com_whatsapp_vps.png`
+* **Target Page:** `whatsapp_vps.php`
+* **System Functionality:** Main dashboard for the WhatsApp integration suite, monitoring daemon uptime and resource usage.
+
+### 15. `Deshbord.png`
+* **Target Page:** `index.php` (Admin Dashboard)
+* **System Functionality:** The analytical command center providing real-time KPI widgets (Total Users, Sales, Pending Withdrawals).
+
+### 16. `exp_p.png`
+* **Target Page:** `exp_pakages.php`
+* **System Functionality:** CRUD interface for creating and defining rules (limits, segment data) for Special/EXP packages.
+
+### 17. `exp_t.png`
+* **Target Page:** `exp_tickets.php`
+* **System Functionality:** Monitoring the sales and distribution specifically for the high-tier EXP tickets.
+
+### 18. `overlay_1_admin.png`
+* **Target Page:** Global Admin UI
+* **System Functionality:** Loading skeleton/spinner preventing overlapping database writes during heavy AJAX execution.
+
+### 19. `Overlay_obe.png`
+* **Target Page:** Global Admin UI
+* **System Functionality:** Security overlay triggered when sessions expire or critical unauthorized actions are attempted.
+
+### 20. `pakages.png`
+* **Target Page:** `pakages.php`
+* **System Functionality:** CRUD matrix for standard lottery packages defining Price, Draw Date, Prize Amount, and Thumbnail.
+
+### 21. `pakages2_admin.png`
+* **Target Page:** `pakages.php` (Edit Mode)
+* **System Functionality:** Advanced configuration modal for modifying existing packages without disrupting active ticket sales.
+
+### 22. `Prediction_winner_list_admin.png`
+* **Target Page:** `winners.php` / `Cron_Jobs_Winner_set`
+* **System Functionality:** The core algorithmic engine interface allowing admins to preview projected winners before committing to the database.
+
+### 23. `Result_admin.png`
+* **Target Page:** `results.php`
+* **System Functionality:** The final publishing gateway that pushes verified winning numbers out to the PWA API and triggers global notifications.
+
+### 24. `Theme_setting_admin.png`
+* **Target Page:** `settings.php`
+* **System Functionality:** Global application configuration allowing admins to toggle maintenance modes, change base currencies, and adjust system limits.
+
+### 25. `website_castomizer_admin.png`
+* **Target Page:** `website.php` (CMS Controller)
+* **System Functionality:** The Headless CMS controller managing dynamic hero banners, textual content, and assets for the `luckywinuk.com` landing page.
+
+### 26. `withdrow_admin.png`
+* **Target Page:** `withdraw.php`
+* **System Functionality:** Financial clearance hub for processing user payout requests, handling status updates (Pending -> Approved) directly querying the `balance_data` table.

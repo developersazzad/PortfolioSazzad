@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7c3aed">
+<title>SystemEasy Software Details — 7 Modules, Screenshots & Tech Stack | Sazzad Hossain</title>
+<meta name="description" content="Full software tour of SystemEasy POS: interactive POS terminal, multi-location inventory, double-entry accounting, purchase & supply chain, restaurant suite, RBAC and multi-currency tax engine — with real screenshots and tech stack.">
+<meta name="keywords" content="SystemEasy features, Laravel POS modules, inventory software features, double entry accounting software, restaurant POS KOT, POS screenshots, Sazzad Hossain">
+<meta name="author" content="Sazzad Hossain (@developersazzad)">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/features.html">
+<link rel="alternate" hreflang="en" href="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/features.html">
+<link rel="alternate" hreflang="x-default" href="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/features.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SystemEasy">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="bn_BD">
+<meta property="og:title" content="SystemEasy Software Details — 7 Modules, Screenshots & Tech Stack">
+<meta property="og:description" content="Production tour of the SystemEasy Laravel POS ecosystem: modules, engineering highlights, real screenshots and tech stack.">
+<meta property="og:url" content="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/features.html">
+<meta property="og:image" content="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/assets/posters/poster-2-1920x1080.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SystemEasy Software Details — 7 Modules & Tech Stack">
+<meta name="twitter:description" content="Inside the SystemEasy Laravel POS codebase: modules, screenshots, engineering highlights.">
+<meta name="twitter:image" content="https://sazzad.wedevspro.com/case-study/systemeasy-case-study/assets/posters/poster-2-1920x1080.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Ctext x='32' y='43' font-size='28' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3ESE%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css?v=20261012">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "SystemEasy Software Details",
+  "url": "https://sazzad.wedevspro.com/case-study/systemeasy-case-study/features.html",
+  "about": { "@type": "SoftwareApplication", "name": "SystemEasy", "url": "https://se.wedevspro.com/" },
+  "creator": { "@type": "Person", "name": "Sazzad Hossain", "alternateName": "developersazzad" },
+  "isPartOf": { "@type": "WebSite", "name": "SystemEasy Case Study", "url": "https://sazzad.wedevspro.com/case-study/systemeasy-case-study/index.html" }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html">
+      <span class="cube">SE</span>
+      <span>SystemEasy<span class="dot"></span><small data-i18n="brand.tag">POS · Inventory · ERP</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="features.html" class="active" data-i18n="nav.software">Software</a>
+      <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang" role="group" aria-label="Language switch">
+        <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+        <button type="button" data-lang="bn" aria-pressed="false">বাং</button>
+      </div>
+      <a class="btn btn-orange btn-sm" href="https://se.wedevspro.com/" target="_blank" rel="noopener" data-i18n="nav.demo">Live Demo</a>
+      <button class="burger" type="button" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-menu" aria-label="Mobile">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="features.html" class="active" data-i18n="nav.software">Software</a>
+    <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    <a href="https://se.wedevspro.com/" target="_blank" rel="noopener" data-i18n="nav.demo">Live Demo</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <span class="kicker v" data-i18n="feat.kicker">Software Details</span>
+      <h1 class="grad" data-i18n="feat.h2">Inside the SystemEasy Codebase</h1>
+      <p class="lead" data-i18n="feat.lead">A production tour of the seven modules — exactly what ships in the live build at se.wedevspro.com.</p>
+      <div class="hero-ctas mt2">
+        <a class="btn btn-orange" href="https://se.wedevspro.com/" target="_blank" rel="noopener" data-i18n="hero.ctaDemo">Live Demo</a>
+        <a class="btn btn-ghost" href="index.html#case-study" data-i18n="foot.res3">Case study — problem &amp; solution</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 MODULES IN DEPTH ============ -->
+  <section class="section mt0" id="modules">
+    <div class="wrap">
+      <div class="grid c2">
+        <article class="card3d rv" data-tilt><div class="ico orange">POS</div><h3 data-i18n="fm1t">High-Speed Interactive POS Terminal</h3>
+          <ul><li data-i18n="fm1b1">Keyboard-shortcut driven checkout for the fastest possible counter experience.</li><li data-i18n="fm1b2">Split payment in one bill: cash + card + bKash/mobile banking combined.</li><li data-i18n="fm1b3">Offline-ready cash register: shift opening balance and closing handover report.</li><li data-i18n="fm1b4">Barcode scanner support with 80mm/58mm thermal printer auto receipt cutting.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt><div class="ico green">INV</div><h3 data-i18n="fm2t">Multi-Location Inventory &amp; Warehousing</h3>
+          <ul><li data-i18n="fm2b1">Product types: single, variable (size/color templates), combo bundles and modifiers.</li><li data-i18n="fm2b2">Warehouse rack / row / shelf location tracking (product_racks).</li><li data-i18n="fm2b3">Batch number and expiry-date management — essential for pharmacy, food and cosmetics.</li><li data-i18n="fm2b4">Automatic low-stock alerts and stock adjustment with damage/scrap logging.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt><div class="ico violet">ACC</div><h3 data-i18n="fm3t">True Double-Entry Accounting &amp; Ledger</h3>
+          <ul><li data-i18n="fm3b1">Fully automatic chart of accounts (accounts, account_types, account_transactions).</li><li data-i18n="fm3b2">Every sale or payment posts debit and credit in the background, instantly.</li><li data-i18n="fm3b3">Balance sheet, trial balance, profit &amp; loss, cash flow statement.</li><li data-i18n="fm3b4">Customer and supplier ledgers with due tracking.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt><div class="ico cyan">PUR</div><h3 data-i18n="fm4t">Intelligent Purchase &amp; Supply Chain</h3>
+          <ul><li data-i18n="fm4b1">Purchase order generation, goods receipt notes and purchase returns.</li><li data-i18n="fm4b2">Supplier due tracking with partial payment scheduling.</li><li data-i18n="fm4b3">FIFO batch matching: each sale maps to the oldest batch for exact gross profit and margin.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt><div class="ico red">RES</div><h3 data-i18n="fm5t">Restaurant &amp; Hospitality Suite</h3>
+          <ul><li data-i18n="fm5b1">Restaurant table layout and seating management (res_tables).</li><li data-i18n="fm5b2">Kitchen order tickets (KOT): counter sends digital orders straight to the kitchen.</li><li data-i18n="fm5b3">Separate service-charge handling for dine-in, takeaway and home delivery.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt><div class="ico gold">ACL</div><h3 data-i18n="fm6t">Enterprise RBAC &amp; Audit Log</h3>
+          <ul><li data-i18n="fm6b1">Spatie Laravel-Permission integration with 81+ granular permissions.</li><li data-i18n="fm6b2">Custom roles for manager, cashier, stock keeper and accountant.</li><li data-i18n="fm6b3">Full audit trail (activity_log): who edited or deleted which invoice, and when.</li></ul>
+        </article>
+        <article class="card3d rv" data-tilt style="grid-column:1/-1"><div class="ico violet">CUR</div><h3 data-i18n="fm7t">Multi-Currency, Multi-Tax &amp; Notification Gateway</h3>
+          <ul><li data-i18n="fm7b1">141 global currencies and multiple tax groups (VAT / GST / flat tax).</li><li data-i18n="fm7b2">SMS notification engine (Twilio, Nexmo) with automatic invoice-link updates to customers.</li><li data-i18n="fm7b3">Secure public invoice viewer (/invoice/{token}) and payment receipt sharing.</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGINEERING HIGHLIGHTS ============ -->
+  <section class="section mt0" id="engineering">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker" data-i18n="eng.kicker">Senior Engineering</span>
+        <h2 class="h2 grad" data-i18n="eng.h2">20-Year-Class Engineering Highlights</h2>
+        <p class="lead" data-i18n="eng.lead">The advanced techniques applied inside SystemEasy that separate it from off-the-shelf POS scripts.</p>
+      </div>
+      <div class="grid c3">
+        <article class="card3d rv" data-tilt><div class="ico green">LOCK</div><h3 data-i18n="cs2.s1t">Pessimistic Row Locking</h3><p data-i18n="cs2.s1p">lockForUpdate() inside DB transactions makes double-selling the same stock unit physically impossible.</p></article>
+        <article class="card3d rv" data-tilt><div class="ico cyan">MATH</div><h3 data-i18n="cs2.s2t">BCMath Money Precision</h3><p data-i18n="cs2.s2p">Zero floating-point discrepancy on currency and tax math — down to the last paisa.</p></article>
+        <article class="card3d rv" data-tilt><div class="ico violet">DATA</div><h3 data-i18n="cs2.s3t">Server-Side DataTables</h3><p data-i18n="cs2.s3p">Pagination, filtering and search at database level: rendering under 100ms even with millions of rows.</p></article>
+        <article class="card3d rv" data-tilt><div class="ico red">FPM</div><h3 data-i18n="cs2.s6t">Isolated PHP 7.4-FPM + Nginx</h3><p data-i18n="cs2.s6p">Dedicated FastCGI socket with OPcache tuning on Ubuntu 24.04 LTS: downtime-free deploys beside PHP 8.3 projects.</p></article>
+        <article class="card3d rv" data-tilt><div class="ico orange">SAFE</div><h3>Installer Vulnerability Patching</h3><p>Deep security audit locked the installer routes on the live system so no unwanted reset can ever happen.</p></article>
+        <article class="card3d rv" data-tilt><div class="ico gold">FIFO</div><h3 data-i18n="cs2.s4t">FIFO Batch Matching</h3><p data-i18n="cs2.s4p">Every sale auto-maps to the oldest purchase batch, producing exact COGS, gross profit and margin.</p></article>
+      </div>
+
+      <h3 class="mt4" data-i18n="cs2.impactTitle">Key Metrics &amp; Impact</h3>
+      <div class="tablewrap rv mt2">
+        <table>
+          <thead><tr><th scope="col" data-i18n="tbl.metric">Metric</th><th scope="col" data-i18n="tbl.impact">Achievement</th></tr></thead>
+          <tbody>
+            <tr><td><b data-i18n="tm1">Database Tables</b></td><td data-i18n="ti1">69 fully normalized relational tables</td></tr>
+            <tr><td><b data-i18n="tm2">Active Currencies</b></td><td data-i18n="ti2">141 global currencies configured</td></tr>
+            <tr><td><b data-i18n="tm3">System Permissions</b></td><td data-i18n="ti3">81 granular access-control permissions</td></tr>
+            <tr><td><b data-i18n="tm4">Stock Accuracy</b></td><td data-i18n="ti4">100% accurate inventory — zero over-selling</td></tr>
+            <tr><td><b data-i18n="tm5">Transaction Speed</b></td><td data-i18n="ti5">Under 50ms database execution time</td></tr>
+            <tr><td><b data-i18n="tm6">Uptime &amp; Security</b></td><td data-i18n="ti6">100% uptime · Cloudflare SSL proxied · Nginx hardened</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="mt4">Tech Stack</h3>
+      <div class="badges rv mt2">
+        <span class="badge v">Laravel 5.8</span><span class="badge v">PHP 7.4-FPM</span><span class="badge v">MySQL 8.0 (InnoDB)</span><span class="badge v">Eloquent ORM</span>
+        <span class="badge o">AdminLTE 2.4</span><span class="badge o">Blade Templates</span><span class="badge o">jQuery</span><span class="badge o">Bootstrap 3</span><span class="badge o">DataTables Server-Side</span>
+        <span class="badge g">Single-DB Multi-Tenant</span><span class="badge g">Domain-Driven Utils</span><span class="badge g">FIFO Engine</span>
+        <span class="badge">Pusher WebSockets</span><span class="badge">Milon Barcode</span><span class="badge">mPDF / DomPDF</span>
+        <span class="badge">Ubuntu 24.04 LTS</span><span class="badge">Nginx FastCGI</span><span class="badge">Cloudflare WAF / SSL</span><span class="badge">OPcache Tuning</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCREENSHOT GALLERY ============ -->
+  <section class="section mt0" id="screens">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="kicker g" data-i18n="gal.kicker">Real Screens</span>
+        <h2 class="h2 grad" data-i18n="gal.h2">Captured From the Live Build</h2>
+        <p class="lead" data-i18n="gal.lead">Every screenshot below was captured from the running system — click any screen to enlarge.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gitem rv" data-full="assets/img/screen-dashboard.png" data-cap="Admin dashboard — KPIs & reports" data-alt="SystemEasy admin dashboard"><img src="assets/img/screen-dashboard.png" width="1366" height="607" loading="lazy" alt="SystemEasy admin dashboard"><figcaption data-i18n="g1">Admin dashboard: purchase, sales, dues, expense KPIs and instant reports</figcaption></figure>
+        <figure class="gitem rv" data-full="assets/img/screen-calculator.png" data-cap="Built-in header calculator" data-alt="Built-in calculator popover"><img src="assets/img/screen-calculator.png" width="1366" height="607" loading="lazy" alt="SystemEasy built-in calculator"><figcaption data-i18n="g2">Built-in header calculator for quick counter math</figcaption></figure>
+        <figure class="gitem rv" data-full="assets/img/screen-profit.png" data-cap="Today's profit breakdown" data-alt="Today's profit modal"><img src="assets/img/screen-profit.png" width="1366" height="607" loading="lazy" alt="SystemEasy today's profit report"><figcaption data-i18n="g3">Today's profit breakdown — opening/closing stock, discounts, returns</figcaption></figure>
+        <figure class="gitem rv" data-full="assets/img/screen-pos.png" data-cap="POS terminal & payments" data-alt="POS terminal screen"><img src="assets/img/screen-pos.png" width="1366" height="607" loading="lazy" alt="SystemEasy POS terminal"><figcaption data-i18n="g4">POS terminal: cart, customer, discount, tax, shipping and payment modes</figcaption></figure>
+        <figure class="gitem rv" data-full="assets/img/screen-landing.png" data-cap="Public landing page" data-alt="SystemEasy public landing page"><img src="assets/img/screen-landing.png" width="1366" height="607" loading="lazy" alt="SystemEasy public landing page"><figcaption data-i18n="g5">Public landing page of SystemEasy</figcaption></figure>
+        <figure class="gitem rv" data-full="assets/img/screen-login.png" data-cap="Secure login screen" data-alt="SystemEasy login screen"><img src="assets/img/screen-login.png" width="1366" height="607" loading="lazy" alt="SystemEasy login screen"><figcaption data-i18n="g6">Secure login screen with language selector</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section mt0">
+    <div class="wrap">
+      <div class="cta-band rv">
+        <h2 data-i18n="cta.h2">See SystemEasy Running Live</h2>
+        <p data-i18n="cta.p">Log into the live demo, watch the full video playlist, or talk to the developer directly.</p>
+        <div class="row">
+          <a class="btn btn-orange" href="https://se.wedevspro.com/" target="_blank" rel="noopener" data-i18n="cta.b1">Open Live Demo</a>
+          <a class="btn btn-ghost" href="https://youtube.com/playlist?list=PLZ9xgaZ2Fc9oyiI9m-ZMmn6f8yPNabNCd" target="_blank" rel="noopener" data-i18n="cta.b2">YouTube Playlist</a>
+          <a class="btn btn-violet" href="contact.html" data-i18n="cta.b3">Hire the Developer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <button class="x" type="button" aria-label="Close">✕</button>
+  <img src="" alt="">
+  <span class="cap2"></span>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="cube">SE</span><span>SystemEasy<span class="dot"></span></span></a>
+        <p class="mt2" data-i18n="foot.about">SystemEasy is a free POS, inventory and double-entry accounting ecosystem for retail chains, wholesalers, super shops and restaurants — developed by Sazzad Hossain.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.nav">Site</h4>
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="features.html" data-i18n="nav.software">Software</a>
+        <a href="tutorials.html" data-i18n="nav.tutorials">Tutorials</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot.res">Resources</h4>
+        <a href="https://se.wedevspro.com/" target="_blank" rel="noopener" data-i18n="foot.res1">Live demo (admin / admin123)</a>
+        <a href="https://youtube.com/playlist?list=PLZ9xgaZ2Fc9oyiI9m-ZMmn6f8yPNabNCd" target="_blank" rel="noopener" data-i18n="foot.res2">YouTube tutorial playlist</a>
+        <a href="index.html#case-study" data-i18n="foot.res3">Case study — problem &amp; solution</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot.dev">Developer</h4>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/developer-sazzad" target="_blank" rel="noopener" data-i18n="soc.linkedin">LinkedIn</a>
+          <a href="https://github.com/developersazzad" target="_blank" rel="noopener" data-i18n="soc.github">GitHub</a>
+          <a href="https://fb.com/developersazzad" target="_blank" rel="noopener" data-i18n="soc.facebook">Facebook</a>
+          <a href="https://wa.me/8801877856951" target="_blank" rel="noopener" data-i18n="soc.whatsapp">WhatsApp</a>
+          <a href="https://youtube.com/@sazzadhossain01" target="_blank" rel="noopener" data-i18n="soc.youtube">YouTube</a>
+          <a href="http://sazzad.wedevspro.com" target="_blank" rel="noopener" data-i18n="soc.portfolio">Portfolio</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span><span data-i18n="foot.copy">© 2026 SystemEasy — Free POS Management System. Developed by</span> <b>Sazzad Hossain (@developersazzad)</b></span>
+      <span data-i18n="foot.made">Made with Laravel · MySQL · Nginx · ☕ in Chattogram</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/lang.js?v=20261012"></script>
+<script src="js/main.js?v=20261012"></script>
+</body>
+</html>

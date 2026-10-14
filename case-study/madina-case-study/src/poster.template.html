@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:#122019}
+.poster{position:relative;width:1080px;height:1350px;background:radial-gradient(900px 700px at 85% 10%,#dfeae2 0,rgba(223,234,226,0) 60%),radial-gradient(700px 600px at 0% 75%,#efe6d3 0,rgba(239,230,211,0) 60%),#f7f4ee;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(18,32,25,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(18,32,25,.045) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse at 60% 45%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 60% 45%,#000 30%,transparent 75%)}
+.top{position:absolute;left:72px;right:72px;top:64px;display:flex;justify-content:space-between;align-items:center}
+.tag{font-size:15px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#3d6b4a;display:flex;align-items:center;gap:12px}
+.tag::before{content:"";width:34px;height:2px;background:currentColor}
+.badge{font-size:14px;font-weight:800;letter-spacing:.08em;padding:10px 18px;border-radius:999px;background:#14281d;color:#e9d3a1;box-shadow:0 12px 24px -12px rgba(15,34,25,.8)}
+h1{position:absolute;left:68px;top:118px;font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:132px;line-height:.92;letter-spacing:-.02em}
+h1 em{display:block;font-style:italic;font-weight:500;color:#3d6b4a}
+.sub{position:absolute;left:74px;top:378px;width:470px;font-size:21px;line-height:1.5;color:#3c4a42}
+.sub b{color:#122019}
+/* 3D stage */
+.stage{position:absolute;left:0;right:0;top:440px;height:560px}
+.laptop{position:absolute;left:300px;top:40px;width:640px;transform:perspective(1600px) rotateX(16deg) rotateY(-20deg) rotateZ(3deg)}
+.screen{background:#0d1712;border-radius:18px 18px 6px 6px;padding:10px;box-shadow:0 60px 90px -40px rgba(15,34,25,.7)}
+.screen img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px}
+.base{height:16px;margin:0 -7%;background:linear-gradient(#e0e3e1,#a5ada8);border-radius:0 0 20px 20px;box-shadow:0 30px 40px -16px rgba(15,34,25,.55)}
+.phone{position:absolute;left:830px;top:120px;width:188px;aspect-ratio:9/19.3;border-radius:34px;background:#0d1712;padding:8px;transform:perspective(1100px) rotateX(8deg) rotateY(-24deg) rotateZ(-4deg);box-shadow:-40px 50px 70px -30px rgba(15,34,25,.75), inset 0 0 0 2px #2b3a32;z-index:3}
+.phone::before{content:"";position:absolute;top:15px;left:50%;width:36%;height:17px;transform:translateX(-50%);background:#0d1712;border-radius:10px;z-index:2}
+.phone div{width:100%;height:100%;border-radius:27px;background:#fff url("{{img:product-m}}") top/cover no-repeat}
+.reel{position:absolute;left:96px;top:120px;width:200px;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:#000 url("{{img:home-m}}") center top/cover;transform:perspective(1100px) rotateY(24deg) rotateX(6deg) rotateZ(-4deg);box-shadow:40px 50px 70px -30px rgba(15,34,25,.75);border:3px solid #fff;z-index:3}
+.reel .play{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.reel .play::after{content:"";border-left:18px solid #14281d;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.reel .ui{position:absolute;left:10px;right:10px;bottom:10px;background:#fff;border-radius:14px;padding:10px;display:flex;align-items:center;gap:8px}
+.reel .ui div{flex:1;font-size:12px;font-weight:800;line-height:1.25}
+.reel .ui small{display:block;color:#3d6b4a;font-size:12px}
+.reel .ui span{font-size:10px;font-weight:800;background:#14281d;color:#fff;padding:7px 9px;border-radius:8px}
+.reel .lbl{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;letter-spacing:.1em;background:linear-gradient(145deg,#e9d3a1,#c9a45c);color:#14281d;padding:5px 8px;border-radius:999px}
+/* shapes */
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0,#e7efe9 18%,#8fb69a 55%,#1f3a2c 100%);box-shadow:0 30px 50px -20px rgba(15,34,25,.6)}
+.orb.gold{background:radial-gradient(circle at 32% 28%,#fff 0,#e9d3a1 22%,#c9a45c 60%,#8a6a2c 100%)}
+.ring{position:absolute;border-radius:50%;border:16px solid transparent;background:linear-gradient(#f4efe5,#f4efe5) padding-box,linear-gradient(145deg,#e9d3a1,#c9a45c 50%,#8a6a2c) border-box;box-shadow:0 26px 40px -20px rgba(15,34,25,.55)}
+.arch{position:absolute;width:110px;height:150px;border-radius:60px 60px 14px 14px;background:linear-gradient(160deg,#5a8d67,#14281d);box-shadow:inset 8px 8px 18px rgba(255,255,255,.18),inset -10px -14px 24px rgba(0,0,0,.28),0 36px 50px -22px rgba(15,34,25,.7)}
+.arch::after{content:"";position:absolute;inset:24px 24px 0;border-radius:44px 44px 0 0;background:linear-gradient(180deg,#e9d3a1,#c9a45c);box-shadow:inset 0 8px 14px rgba(0,0,0,.2)}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:16px;background:rgba(255,253,249,.94);font-size:15px;font-weight:700;box-shadow:0 1px 0 #fff inset,0 24px 40px -20px rgba(15,34,25,.55);z-index:5;white-space:nowrap}
+.chip b{font-family:"Fraunces",serif;font-size:24px;color:#1f3a2c}
+.chip i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-style:normal;color:#fff;background:linear-gradient(145deg,#c9a45c,#a7833f);font-size:15px}
+/* features */
+.feats{position:absolute;left:72px;right:72px;top:1010px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.f{background:#fffdf9;border-radius:18px;padding:16px 16px;box-shadow:0 1px 0 #fff inset,0 20px 34px -22px rgba(15,34,25,.5)}
+.f small{font-size:11px;font-weight:800;letter-spacing:.14em;color:#a7833f;text-transform:uppercase}
+.f p{font-size:15px;font-weight:700;margin-top:4px;line-height:1.3}
+/* credits */
+.credits{position:absolute;left:0;right:0;bottom:0;height:200px;background:#0f2219;color:#cfdcd3;padding:34px 72px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+.credits::before{content:"";position:absolute;right:-130px;top:-110px;width:220px;height:220px;border-radius:50%;border:16px solid #c9a45c;opacity:.25}
+.credits .label{position:absolute;top:22px;left:72px;font-size:11px;font-weight:800;letter-spacing:.22em;color:#8fb69a;text-transform:uppercase}
+.who{display:flex;align-items:center;gap:20px;margin-top:14px}
+.av{width:84px;height:84px;border-radius:24px;display:grid;place-items:center;font-family:"Fraunces",serif;font-size:32px;font-weight:700;color:#0f2219;background:linear-gradient(145deg,#e9d3a1,#c9a45c);box-shadow:0 18px 30px -14px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.6)}
+.who h3{font-family:"Fraunces",serif;font-size:34px;color:#fff;font-weight:700;line-height:1.05}
+.who p{font-size:15px;color:#9fb4a6;margin-top:4px}
+.links{display:grid;grid-template-columns:auto auto;gap:10px 26px;font-size:15px;font-weight:600;color:#e5eee8;margin-top:14px;position:relative}
+.links span{display:flex;align-items:center;gap:9px}
+.links span::before{content:"";width:8px;height:8px;border-radius:50%;background:#c9a45c}
+</style></head>
+<body><div class="poster">
+  <div class="grid-bg"></div>
+  <div class="top"><span class="tag">Case Study · E-commerce</span><span class="badge">WordPress + WooCommerce</span></div>
+  <h1>Madina<em>Clothing</em></h1>
+  <p class="sub">An Islamic lifestyle store made into a <b>mobile-first shop</b>, with a <b>custom Shoppable Reel plugin</b> that sells straight from video.</p>
+
+  <div class="stage">
+    <span class="ring" style="width:190px;height:190px;left:-50px;top:330px"></span>
+    <span class="orb gold" style="width:78px;height:78px;left:930px;top:-60px"></span>
+    <span class="orb" style="width:50px;height:50px;left:290px;top:440px"></span>
+    <span class="arch" style="left:10px;top:40px;transform:rotate(-10deg) scale(.85)"></span>
+    <div class="laptop"><div class="screen"><img src="{{img:home-d}}" alt=""></div><div class="base"></div></div>
+    <div class="reel"><span class="lbl">SHOPPABLE REEL</span><div class="play"></div><div class="ui"><div>Royal Elegance Abaya<small>£110.00</small></div><span>SHOP</span></div></div>
+    <div class="phone"><div></div></div>
+    <div class="chip" style="left:600px;top:-30px"><i>◆</i><b>158</b> products live</div>
+    <div class="chip" style="left:560px;top:470px"><i>❖</i><b>16</b> categories</div>
+    <div class="chip" style="left:790px;top:50px"><i>▶</i>Custom plugin v1.5</div>
+  </div>
+
+  <div class="feats">
+    <div class="f"><small>Built</small><p>Shoppable Reel plugin</p></div>
+    <div class="f"><small>Fit</small><p>Size guide &amp; variations</p></div>
+    <div class="f"><small>Trust</small><p>WhatsApp + phone chat</p></div>
+    <div class="f"><small>Pay</small><p>PayPal secure checkout</p></div>
+  </div>
+
+  <div class="credits">
+    <span class="label">Designed &amp; developed by</span>
+    <div class="who"><div class="av">SH</div><div><h3>Sazzad Hossain</h3><p>@developersazzad · Full-Stack Web Developer</p></div></div>
+    <div class="links"><span>sazzad.wedevspro.com</span><span>github.com/developersazzad</span><span>in/developer-sazzad</span><span>wa.me/8801877856951</span></div>
+  </div>
+</div></body></html>

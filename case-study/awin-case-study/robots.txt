@@ -1,0 +1,4 @@
+# AWIN Lottery PWA Case Study
+# Add your production sitemap URL here after deploying the portfolio site.
+User-agent: *
+Allow: /

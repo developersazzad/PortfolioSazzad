@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Sazzad Hossain | Full-Stack Web Developer</title>
+<meta name="description" content="How Sazzad Hossain collects, uses, stores and protects personal information submitted through this portfolio website — contact enquiries, subscribers, CV downloads, cookies and your rights.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ai.khatifoodbazar.com/wa/portfolio/privacy/">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f; --bg-soft:#0e0e15; --surface:#12121b; --surface-2:#161620;
+  --border:rgba(255,255,255,.09); --border-strong:rgba(255,255,255,.16);
+  --text:#f3f3f6; --text-muted:#9d9da8; --text-faint:#63636e;
+  --accent:#b6ff3c; --accent-dim:#8fce2c; --accent-ink:#0a0a0f;
+  --accent-glow:rgba(182,255,60,.14);
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.display{font-family:'Space Grotesk','Inter',ui-sans-serif,system-ui,sans-serif;letter-spacing:-.02em;line-height:1.2}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+.accent{color:var(--accent)}
+.muted{color:var(--text-muted)}
+
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.65rem;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;text-decoration:none}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
+.hdr-nav{display:none;align-items:center;gap:1.5rem;font-size:.88rem;color:var(--text-muted)}
+.hdr-nav a{text-decoration:none;transition:color .2s}
+.hdr-nav a:hover{color:var(--text)}
+.hdr-nav a.active{color:var(--accent)}
+@media(min-width:820px){.hdr-nav{display:flex}}
+.btn{display:inline-flex;align-items:center;gap:.5rem;justify-content:center;padding:.6rem 1.05rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border-strong)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:3.5rem 0 2rem}
+.dot-grid{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:22px 22px;
+  mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000 20%,transparent 75%)}
+.glow{position:absolute;right:-120px;top:-100px;width:420px;height:420px;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(90,160,10,.32),transparent 66%)}
+.kicker{display:inline-flex;align-items:center;gap:.55rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em}
+.kicker-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;margin:1rem 0 0}
+.lede{margin-top:1rem;max-width:64ch;color:var(--text-muted)}
+.meta-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.pill{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .8rem;border-radius:100px;border:1px solid var(--border-strong);font-size:.75rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted)}
+.pill b{color:var(--text);font-weight:600}
+
+/* summary cards */
+.summary{display:grid;gap:.9rem;margin:2.25rem 0 0}
+@media(min-width:700px){.summary{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.summary{grid-template-columns:repeat(4,1fr)}}
+.s-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.15rem}
+.s-card h3{margin:0 0 .45rem;font-size:.95rem;display:flex;align-items:center;gap:.5rem}
+.s-card p{margin:0;font-size:.84rem;color:var(--text-muted)}
+.s-ico{width:26px;height:26px;border-radius:50%;background:var(--accent-glow);border:1px solid rgba(182,255,60,.3);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0}
+
+/* layout */
+.layout{display:block;padding:2.5rem 0 4rem}
+@media(min-width:1020px){.layout{display:grid;grid-template-columns:250px 1fr;gap:3rem;align-items:start}}
+.toc{display:none}
+@media(min-width:1020px){
+  .toc{display:block;position:sticky;top:88px;font-size:.83rem}
+  .toc p{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-faint);margin:0 0 .75rem}
+  .toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--border)}
+  .toc a{display:block;padding:.3rem .8rem;color:var(--text-muted);text-decoration:none;border-left:2px solid transparent;margin-left:-1px;transition:.18s}
+  .toc a:hover{color:var(--text);border-left-color:var(--border-strong)}
+  .toc a.active{color:var(--accent);border-left-color:var(--accent)}
+}
+.doc section{margin-bottom:2.5rem;scroll-margin-top:92px}
+.doc h2{font-size:1.28rem;margin:0 0 .9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);display:flex;gap:.7rem;align-items:baseline}
+.doc h2 .n{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent)}
+.doc h3{font-size:1rem;margin:1.5rem 0 .5rem}
+.doc p{margin:0 0 1rem;color:var(--text-muted);font-size:.93rem}
+.doc ul,.doc ol{margin:0 0 1rem;padding-left:1.2rem;color:var(--text-muted);font-size:.93rem}
+.doc li{margin-bottom:.45rem}
+.doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(182,255,60,.3)}
+.doc a:hover{border-bottom-color:var(--accent)}
+.doc strong{color:var(--text)}
+.doc code{font-family:'JetBrains Mono',monospace;font-size:.82em;background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:.1rem .35rem;color:var(--text)}
+.callout{border:1px solid rgba(182,255,60,.28);background:linear-gradient(180deg,rgba(182,255,60,.07),rgba(182,255,60,.02));border-radius:12px;padding:1.1rem 1.2rem;margin:0 0 1.25rem}
+.callout p:last-child{margin-bottom:0}
+.callout .t{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 .5rem}
+.note{border-left:2px solid var(--border-strong);padding:.2rem 0 .2rem 1rem;color:var(--text-faint);font-size:.84rem;margin:0 0 1.25rem}
+
+table.data{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.86rem;display:block;overflow-x:auto;white-space:nowrap}
+table.data th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);padding:.65rem .8rem;border-bottom:1px solid var(--border-strong);background:var(--surface)}
+table.data td{padding:.7rem .8rem;border-bottom:1px solid var(--border);color:var(--text-muted);vertical-align:top;white-space:normal}
+table.data tr:hover td{background:var(--surface)}
+table.data td:first-child{color:var(--text);font-weight:500}
+@media(min-width:760px){table.data{display:table;white-space:normal}}
+
+.rights{display:grid;gap:.7rem;margin:0 0 1.25rem}
+@media(min-width:700px){.rights{grid-template-columns:repeat(2,1fr)}}
+.right{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:.9rem 1rem}
+.right b{display:block;font-size:.88rem;margin-bottom:.2rem}
+.right span{font-size:.83rem;color:var(--text-muted)}
+
+.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-top:.5rem}
+.contact-box dl{display:grid;gap:.9rem;margin:0}
+@media(min-width:620px){.contact-box dl{grid-template-columns:repeat(3,1fr)}}
+.contact-box dt{font-family:'JetBrains Mono',monospace;font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-faint);margin-bottom:.3rem}
+.contact-box dd{margin:0;font-size:.88rem;color:var(--text)}
+
+.updated{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:.85rem 1rem;font-size:.83rem;color:var(--text-muted);margin-bottom:1.5rem}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:.5rem}
+
+footer{border-top:1px solid var(--border);background:var(--bg-soft);padding:2.75rem 0 0}
+.f-cols{display:grid;gap:2rem;padding-bottom:2.25rem}
+@media(min-width:760px){.f-cols{grid-template-columns:1.3fr 1fr 1fr}}
+.f-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-faint);margin:0 0 .9rem}
+.f-list{list-style:none;margin:0;padding:0;font-size:.87rem}
+.f-list li{margin-bottom:.55rem;color:var(--text-muted)}
+.f-list a{text-decoration:none;color:var(--text-muted);transition:color .2s}
+.f-list a:hover{color:var(--accent)}
+.f-head{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.2}
+.socials{display:flex;gap:.5rem;margin-top:1rem}
+.socials a{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:.2s}
+.socials a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+.f-bottom{border-top:1px solid var(--border);padding:1rem 0;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-faint)}
+.f-links{display:flex;gap:1.25rem}
+.f-links a{text-decoration:none;color:var(--text-faint);transition:color .2s}
+.f-links a:hover{color:var(--accent)}
+.f-links a.active{color:var(--accent)}
+.to-top{position:fixed;right:1.1rem;bottom:1.1rem;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+@media print{
+  body{background:#fff;color:#000}
+  header,footer,.toc,.to-top,.glow,.dot-grid{display:none!important}
+  .doc a{color:#000}
+}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:.75rem;background:var(--accent);color:var(--accent-ink);padding:.5rem .8rem;border-radius:6px;z-index:99;text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<section class="hero">
+  <div class="dot-grid" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span> sazzad@devfolio:~$ cat privacy.md</p>
+    <h1>Privacy <span class="accent">Policy</span></h1>
+    <p class="lede">
+      This page explains, in plain language, what information this website collects when you contact me,
+      subscribe for updates or download my CV — what I do with it, who else is involved, how long I keep it,
+      and how you can have it changed or deleted.
+    </p>
+    <div class="meta-row">
+      <span class="pill"><span class="dot" aria-hidden="true"></span> Effective: <b>21 September 2026</b></span>
+      <span class="pill"><span class="dot" aria-hidden="true"></span> Applies to: <b>ai.khatifoodbazar.com/wa/portfolio</b></span>
+      <span class="pill"><span class="dot" aria-hidden="true"></span> Contact: <b>developer.sazzad.me@gmail.com</b></span>
+    </div>
+
+    <div class="summary">
+      <div class="s-card">
+        <h3><span class="s-ico" aria-hidden="true">◍</span> I collect very little</h3>
+        <p>Only what you type into the contact or subscribe form, plus basic technical data for security and statistics.</p>
+      </div>
+      <div class="s-card">
+        <h3><span class="s-ico" aria-hidden="true">◍</span> I never sell it</h3>
+        <p>Your details are never sold, rented or traded, and never used for advertising lists or resold mailing lists.</p>
+      </div>
+      <div class="s-card">
+        <h3><span class="s-ico" aria-hidden="true">◍</span> No ad tracking</h3>
+        <p>No advertising pixels, no cross-site profiling. Analytics, if enabled, are aggregate and configuration-light.</p>
+      </div>
+      <div class="s-card">
+        <h3><span class="s-ico" aria-hidden="true">◍</span> You stay in control</h3>
+        <p>Unsubscribe in one click, or email me to access, correct or delete everything I hold about you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="layout wrap">
+  <aside class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ol>
+      <li><a href="#who">1. Who is responsible</a></li>
+      <li><a href="#what">2. What I collect</a></li>
+      <li><a href="#why">3. Why I collect it</a></li>
+      <li><a href="#basis">4. Legal basis</a></li>
+      <li><a href="#cookies">5. Cookies &amp; storage</a></li>
+      <li><a href="#third">6. Third-party services</a></li>
+      <li><a href="#sharing">7. Sharing &amp; transfers</a></li>
+      <li><a href="#retention">8. How long I keep it</a></li>
+      <li><a href="#security">9. How it's protected</a></li>
+      <li><a href="#clients">10. Client project data</a></li>
+      <li><a href="#rights">11. Your rights</a></li>
+      <li><a href="#children">12. Children</a></li>
+      <li><a href="#links">13. Other websites</a></li>
+      <li><a href="#changes">14. Changes to this policy</a></li>
+      <li><a href="#contact">15. How to contact me</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc" id="main">
+    <div class="updated"><span class="dot" aria-hidden="true"></span> <strong style="color:var(--text)">Last updated:</strong> 21 September 2026 &nbsp;·&nbsp; This policy replaces any earlier version.</div>
+
+    <!-- 1 -->
+    <section id="who">
+      <h2><span class="n">01</span> Who is responsible for your information</h2>
+      <p>
+        This website is a personal portfolio operated by <strong>Sazzad Hossain</strong>, an independent
+        full-stack web developer based in Bakalia, Chittagong, Bangladesh. For the purposes of data
+        protection law, I am the controller of the personal information described on this page —
+        meaning I decide why and how it is processed, and I am the person you contact about it.
+      </p>
+      <div class="contact-box">
+        <dl>
+          <div><dt>Controller</dt><dd>Sazzad Hossain — Full-Stack Web Developer</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:developer.sazzad.me@gmail.com">developer.sazzad.me@gmail.com</a></dd></div>
+          <div><dt>Location</dt><dd>Bakalia, Chittagong, Bangladesh</dd></div>
+        </dl>
+      </div>
+      <p class="note">
+        Prefer WhatsApp for quick questions? <a href="https://wa.me/8801877856951" target="_blank" rel="noopener">+880 1877-856951</a>.
+        If you contact me on WhatsApp, that conversation is also subject to WhatsApp's own privacy terms.
+      </p>
+    </section>
+
+    <!-- 2 -->
+    <section id="what">
+      <h2><span class="n">02</span> What information I collect</h2>
+      <p>
+        I deliberately collect as little as possible. There is no account system, no payment processing and
+        no advertising on this site. The table below lists everything that can be collected, and exactly how
+        it arrives.
+      </p>
+
+      <table class="data">
+        <caption class="note" style="caption-side:top;text-align:left;margin-bottom:.6rem">Information collected through this website</caption>
+        <thead>
+          <tr><th>What</th><th>When it's collected</th><th>Why</th><th>Kept for</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name, email address, phone number, message</td>
+            <td>When you submit the contact form</td>
+            <td>To read your enquiry and reply to you</td>
+            <td>Up to 24 months</td>
+          </tr>
+          <tr>
+            <td>Email address (and name, if provided)</td>
+            <td>When you subscribe for updates in the footer</td>
+            <td>To send occasional updates — only if you asked for them</td>
+            <td>Until you unsubscribe, then up to 6 months for suppression</td>
+          </tr>
+          <tr>
+            <td>CV download statistics — date, page you came from, browser type, device type, and a <strong>hashed</strong> version of your IP address</td>
+            <td>When you click "Download CV"</td>
+            <td>To know whether the CV is being found and used</td>
+            <td>Up to 12 months</td>
+          </tr>
+          <tr>
+            <td>Server log data — IP address, browser user agent, requested page, timestamp</td>
+            <td>Automatically, on every visit</td>
+            <td>Security, abuse prevention and troubleshooting</td>
+            <td>Up to 12 months</td>
+          </tr>
+          <tr>
+            <td>Your theme preference (dark/light) and menu state</td>
+            <td>Automatically, when you use the site</td>
+            <td>So the site remembers how you like it</td>
+            <td>Stored in your own browser only</td>
+          </tr>
+          <tr>
+            <td>Aggregate analytics — pages viewed, approximate country, referring site</td>
+            <td>If analytics is enabled on the site</td>
+            <td>To understand which work and pages are useful</td>
+            <td>Up to 14 months (per the provider's settings)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>What I do not collect</h3>
+      <ul>
+        <li>No passwords or login credentials (this site has no public accounts).</li>
+        <li>No payment card or bank details — payments for projects are handled separately and never through this website.</li>
+        <li>No sensitive categories of data — health, religion, political views, biometrics, etc.</li>
+        <li>No advertising identifiers or cross-site tracking profiles.</li>
+      </ul>
+
+      <div class="callout">
+        <p class="t">Please don't send secrets through the form</p>
+        <p>
+          The contact form is convenient but not a secure channel for credentials. If a project discussion
+          needs server access, database dumps or API keys, I'll set up a safer method (encrypted archive,
+          password manager share, or a temporary secure link) — never through a web form.
+        </p>
+      </div>
+
+      <p class="note">
+        IP addresses recorded for security are stored in plain form in server logs where required for abuse
+        handling, and in <strong>hashed</strong> form for download statistics, so individual readers cannot be
+        identified from the analytics. I do not attempt to identify anonymous visitors.
+      </p>
+    </section>
+
+    <!-- 3 -->
+    <section id="why">
+      <h2><span class="n">03</span> Why I use your information</h2>
+      <ul>
+        <li><strong>To answer you.</strong> Reading your enquiry and replying is the whole point of the contact form.</li>
+        <li><strong>To prepare a proposal.</strong> If you ask about a project, understanding your requirement lets me quote scope, timeline and price.</li>
+        <li><strong>To deliver agreed work.</strong> If we work together, your contact details and project information are needed to communicate and deliver.</li>
+        <li><strong>To send updates you asked for.</strong> If you subscribed, you receive occasional notes about new work, tools or availability — and nothing else.</li>
+        <li><strong>To keep the site working and safe.</strong> Rate limiting, spam filtering, and security monitoring to stop the forms being abused.</li>
+        <li><strong>To understand what's useful.</strong> Aggregate statistics about which pages and projects visitors spend time on.</li>
+      </ul>
+      <p>
+        I do <strong>not</strong> use your information for automated decision-making or profiling,
+        and I do <strong>not</strong> use it to send you marketing you did not ask for.
+      </p>
+    </section>
+
+    <!-- 4 -->
+    <section id="basis">
+      <h2><span class="n">04</span> The legal basis for processing</h2>
+      <p>
+        Where data protection regulations such as the EU/UK GDPR apply to your enquiry, I rely on the
+        following bases:
+      </p>
+      <table class="data">
+        <thead><tr><th>Purpose</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td>Replying to your enquiry</td><td>Your consent (submitting the form) and steps taken at your request before a contract</td></tr>
+          <tr><td>Preparing a quote and delivering a project</td><td>Performance of a contract, or steps requested before entering one</td></tr>
+          <tr><td>Sending subscribed updates</td><td>Your consent — withdrawable at any time via the unsubscribe link</td></tr>
+          <tr><td>Security logs, spam and abuse prevention</td><td>Legitimate interest in keeping the site and my work secure</td></tr>
+          <tr><td>Aggregate analytics</td><td>Legitimate interest in improving the site, using privacy-light settings</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        Locally, Bangladesh's data protection framework (including the Digital Security Act's successors and
+        sector rules) applies to the extent it governs my activity. Because I work with clients internationally,
+        I follow the stricter standard where the two differ.
+      </p>
+    </section>
+
+    <!-- 5 -->
+    <section id="cookies">
+      <h2><span class="n">05</span> Cookies and local storage</h2>
+      <p>
+        This site does not use advertising or tracking cookies. It does use a small amount of browser storage
+        for functionality, and the hosting environment sets a technical session cookie where required for
+        security.
+      </p>
+      <table class="data">
+        <thead><tr><th>Name / type</th><th>Purpose</th><th>Type</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td><code>theme</code> (local storage)</td><td>Remembers your dark/light display choice</td><td>Essential, first-party</td><td>Until you clear it</td></tr>
+          <tr><td><code>menu</code> (local storage)</td><td>Remembers an expanded/collapsed interface state</td><td>Essential, first-party</td><td>Until you clear it</td></tr>
+          <tr><td>Server session cookie</td><td>Keeps the session valid and prevents cross-site request forgery</td><td>Essential, first-party</td><td>Session / up to 24 hours</td></tr>
+          <tr><td>Security filtering (e.g. Cloudflare or host-level protection)</td><td>Distinguishes human visitors from automated abuse</td><td>Essential, third-party</td><td>Per the provider, typically under 24 hours</td></tr>
+          <tr><td>Analytics cookies</td><td>Aggregate visitor statistics, only if analytics is enabled</td><td>Optional, third-party</td><td>Up to 13–14 months</td></tr>
+        </tbody>
+      </table>
+      <p>
+        You can block or delete these at any time from your browser settings — the site will keep working,
+        you'll just lose the remembered theme choice. Blocking the session cookie may affect the contact form's
+        spam protection.
+      </p>
+    </section>
+
+    <!-- 6 -->
+    <section id="third">
+      <h2><span class="n">06</span> Third-party services this site relies on</h2>
+      <p>
+        A website is never only one computer. These are the external services involved when you use this site,
+        and what each of them can see. Where a service is optional, I've said so.
+      </p>
+      <table class="data">
+        <thead><tr><th>Service</th><th>What it does here</th><th>What it can see</th></tr></thead>
+        <tbody>
+          <tr><td>Web host / server (LiteSpeed hosting)</td><td>Serves the site and stores the database</td><td>Technical request data and server logs</td></tr>
+          <tr><td>Google Fonts</td><td>Loads the fonts used in the design</td><td>Your IP address and browser, when fonts are requested</td></tr>
+          <tr><td>Tailwind CDN / JavaScript assets</td><td>Loads front-end styling for the page</td><td>Your IP address and browser</td></tr>
+          <tr><td>Email service (SMTP provider)</td><td>Delivers notification and reply emails</td><td>Recipient and message content of emails I send</td></tr>
+          <tr><td>Google Analytics 4 <em>(only if enabled)</em></td><td>Aggregate page statistics</td><td>Truncated IP, page views, device type, approximate region</td></tr>
+          <tr><td>Google reCAPTCHA <em>(only if enabled)</em></td><td>Blocks automated spam on the contact form</td><td>Browser signals and IP used for the spam score</td></tr>
+          <tr><td>WhatsApp <em>(only if you choose it)</em></td><td>Alternative channel for contacting me</td><td>Your phone number and the messages you send</td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        <strong>Transfer note:</strong> Google Fonts, analytics and Cloudflare-style security services are operated
+        globally and may process your request data outside Bangladesh. Fonts can be self-hosted on request to
+        avoid third-party font requests entirely.
+      </p>
+    </section>
+
+    <!-- 7 -->
+    <section id="sharing">
+      <h2><span class="n">07</span> Who I share information with</h2>
+      <p>
+        <strong>Nobody else — and never for money.</strong> I do not sell, rent, trade or publish your personal
+        information, and I do not add you to any list you didn't ask for.
+      </p>
+      <p>Information is shared only with:</p>
+      <ul>
+        <li><strong>Service providers listed above</strong>, strictly as needed for the site and email to function.</li>
+        <li><strong>Professional advisers</strong> (accountant, legal) if required for invoicing or a dispute — under confidentiality.</li>
+        <li><strong>Authorities</strong>, only where the law compels it and a lawful request is made.</li>
+      </ul>
+      <p>
+        The only exception to confidentiality about projects is portfolio rights: I may mention a project I
+        delivered, in general terms, unless we agreed an NDA. Client data inside that project — users, orders,
+        customer records — is never published or reused.
+      </p>
+    </section>
+
+    <!-- 8 -->
+    <section id="retention">
+      <h2><span class="n">08</span> How long information is kept</h2>
+      <ul>
+        <li><strong>Contact enquiries:</strong> up to 24 months from the last reply, so a returning conversation still makes sense.</li>
+        <li><strong>Project clients:</strong> contact and project records are kept for the duration of the engagement plus up to 24 months afterwards for support and accounting.</li>
+        <li><strong>Subscribers:</strong> until you unsubscribe. A minimal record (email + unsubscribed status) is then kept for up to 6 months so I don't accidentally email you again.</li>
+        <li><strong>CV download statistics:</strong> up to 12 months, in hashed/anonymised form.</li>
+        <li><strong>Server logs:</strong> up to 12 months, then deleted.</li>
+        <li><strong>Spam and abuse records:</strong> up to 12 months from the block or report.</li>
+      </ul>
+      <p>
+        When the period ends, records are deleted or irreversibly anonymised. If you ask me to delete something
+        earlier, I will — see section 11.
+      </p>
+    </section>
+
+    <!-- 9 -->
+    <section id="security">
+      <h2><span class="n">09</span> How the information is protected</h2>
+      <ul>
+        <li>The site is served over HTTPS with an enforced secure connection (HSTS), so traffic is encrypted in transit.</li>
+        <li>Form submissions are checked for abuse with spam filtering and rate limiting, and validated before storage.</li>
+        <li>The admin area is protected by authentication, session controls and access checks; only I can read enquiries.</li>
+        <li>Download statistics are hashed, so individual visitors are not identifiable from them.</li>
+        <li>Backups are restricted and access to the hosting, database and email accounts uses strong, unique credentials.</li>
+        <li>Software and dependencies are kept updated to reduce known vulnerability exposure.</li>
+      </ul>
+      <p>
+        No system is perfectly secure, and I won't pretend otherwise. What I can commit to is reasonable,
+        proportionate protection, minimal collection in the first place, and telling you promptly if a breach
+        affecting your information ever occurs.
+      </p>
+    </section>
+
+    <!-- 10 -->
+    <section id="clients">
+      <h2><span class="n">10</span> If you're a client: your project data</h2>
+      <p>
+        When I build or maintain a system for you, that system's data — users, customers, orders, content —
+        belongs to you and is your responsibility as its owner. My commitments are:
+      </p>
+      <ul>
+        <li>Access is limited to me and anyone you explicitly authorise, and only for the work requested.</li>
+        <li>I don't copy production data into personal environments; where testing needs realistic data, it's anonymised.</li>
+        <li>Credentials and API keys are handled through a password manager or a protocol you approve, and rotated on handover.</li>
+        <li>Data is not reused for other clients, published, or used to train anything.</li>
+        <li>On completion or on request, access is removed and local copies deleted after an agreed retention window.</li>
+        <li>An NDA can be signed before any confidential material is shared — just ask.</li>
+      </ul>
+    </section>
+
+    <!-- 11 -->
+    <section id="rights">
+      <h2><span class="n">11</span> Your rights over your information</h2>
+      <p>
+        You can exercise any of these at any time by emailing
+        <a href="mailto:developer.sazzad.me@gmail.com">developer.sazzad.me@gmail.com</a>. I answer within 30 days —
+        usually much sooner — and it costs you nothing.
+      </p>
+      <div class="rights">
+        <div class="right"><b>Access</b><span>Ask what information I hold about you and receive a copy.</span></div>
+        <div class="right"><b>Correction</b><span>Have anything inaccurate or incomplete fixed.</span></div>
+        <div class="right"><b>Deletion</b><span>Ask me to delete your data — honoured unless the law requires me to keep a specific record.</span></div>
+        <div class="right"><b>Portability</b><span>Receive your data in a common, machine-readable format (JSON or CSV).</span></div>
+        <div class="right"><b>Objection &amp; restriction</b><span>Object to processing based on legitimate interest, or ask me to pause processing while a question is resolved.</span></div>
+        <div class="right"><b>Withdraw consent</b><span>Unsubscribe from updates with one click, or by email — no reason needed, no hard feelings.</span></div>
+      </div>
+      <p class="note">
+        If you're in the EU/UK and unhappy with my response, you have the right to complain to your local
+        supervisory authority. If you're in Bangladesh and we can't resolve something directly, you may raise it
+        through the applicable local process. I'd always prefer to fix it with you first.
+      </p>
+    </section>
+
+    <!-- 12 -->
+    <section id="children">
+      <h2><span class="n">12</span> Children</h2>
+      <p>
+        My services are meant for businesses and professional clients, not for children. I don't knowingly
+        collect information from anyone under 16. If you believe a child has submitted information through this
+        site, email me and I'll delete it promptly.
+      </p>
+    </section>
+
+    <!-- 13 -->
+    <section id="links">
+      <h2><span class="n">13</span> Links to other websites</h2>
+      <p>
+        My portfolio links to client projects, repositories and social profiles. Those sites have their own
+        privacy practices, which I don't control and can't speak for. When you follow a link off this site,
+        read the destination's policy before submitting information there.
+      </p>
+    </section>
+
+    <!-- 14 -->
+    <section id="changes">
+      <h2><span class="n">14</span> Changes to this policy</h2>
+      <p>
+        If how I handle information changes — a new analytics tool, a new form, a new service — this page is
+        updated and the "last updated" date at the top changes. For significant changes I'll also note them
+        on the main portfolio page for a reasonable period. Continuing to use the site after an update means
+        you accept the revised policy.
+      </p>
+      <div class="callout">
+        <p class="t">Version history</p>
+        <p><strong>v1.0 — 21 September 2026:</strong> first published policy covering contact enquiries, subscribers, CV download statistics, cookies and client project data.</p>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section id="contact">
+      <h2><span class="n">15</span> How to contact me about privacy</h2>
+      <p>
+        Any question, request or complaint about your information comes straight to me — there is no
+        support department in between.
+      </p>
+      <div class="contact-box">
+        <dl>
+          <div><dt>Email</dt><dd><a href="mailto:developer.sazzad.me@gmail.com">developer.sazzad.me@gmail.com</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/8801877856951" target="_blank" rel="noopener">+880 1877-856951</a></dd></div>
+          <div><dt>Postal address</dt><dd>Bakalia, Chittagong, Bangladesh</dd></div>
+        </dl>
+      </div>
+      <p style="margin-top:1.25rem">
+        Looking for something else? The <a href="../faq/">frequently asked questions</a> cover services, pricing
+        and how I work — and the <a href="../#contact">contact form</a> is the fastest way to start a conversation.
+      </p>
+    </section>
+  </main>
+</div>
+
+
+<script>
+(function(){
+  "use strict";
+
+  /* back to top */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    toTop.classList.toggle('show', window.scrollY > 400);
+  }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* active TOC highlight */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if('IntersectionObserver' in window && sections.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){
+            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, {rootMargin:'-90px 0px -75% 0px', threshold:0});
+    sections.forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

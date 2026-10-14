@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Sazzad Hossain | Full-Stack Web Developer</title>
+<meta name="description" content="Answers to the questions clients ask most before starting a project with Sazzad Hossain — services, tech stack, process, pricing, timelines, ownership and post-launch support.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ai.khatifoodbazar.com/wa/portfolio/faq/">
+<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f; --bg-soft:#0e0e15; --surface:#12121b; --surface-2:#161620;
+  --border:rgba(255,255,255,.09); --border-strong:rgba(255,255,255,.16);
+  --text:#f3f3f6; --text-muted:#9d9da8; --text-faint:#63636e;
+  --accent:#b6ff3c; --accent-dim:#8fce2c; --accent-ink:#0a0a0f;
+  --accent-glow:rgba(182,255,60,.14);
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Space Grotesk','Inter',ui-sans-serif,system-ui,sans-serif;letter-spacing:-.02em;line-height:1.15}
+.mono{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+.accent{color:var(--accent)}
+.muted{color:var(--text-muted)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(10,10,15,.72);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.65rem;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;text-decoration:none}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-glow)}
+.hdr-nav{display:none;align-items:center;gap:1.5rem;font-size:.88rem;color:var(--text-muted)}
+.hdr-nav a{text-decoration:none;transition:color .2s}
+.hdr-nav a:hover{color:var(--text)}
+.hdr-nav a.active{color:var(--accent)}
+@media(min-width:820px){.hdr-nav{display:flex}}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;justify-content:center;
+  padding:.6rem 1.05rem;border-radius:8px;font-size:.85rem;font-weight:600;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.2s;
+}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border-strong)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:4rem 0 2.5rem}
+.dot-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:22px 22px;
+  mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 0%,#000 20%,transparent 75%);
+}
+.glow{position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,rgba(90,160,10,.35),transparent 66%);filter:blur(10px)}
+.kicker{display:inline-flex;align-items:center;gap:.55rem;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em}
+.kicker-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:700;margin:1rem 0 0}
+.lede{margin-top:1.1rem;max-width:62ch;font-size:clamp(.98rem,2vw,1.08rem);color:var(--text-muted)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+.pill{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .8rem;border-radius:100px;border:1px solid var(--border-strong);font-size:.76rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted)}
+.pill b{color:var(--text);font-weight:600}
+.pill .d{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* ---------- tools ---------- */
+.tools{position:sticky;top:64px;z-index:40;background:linear-gradient(180deg,rgba(10,10,15,.96),rgba(10,10,15,.82));backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.85rem 0}
+.tools-in{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.search{position:relative;flex:1 1 260px;max-width:360px}
+.search input{
+  width:100%;background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;
+  padding:.6rem .8rem .6rem 2.2rem;color:var(--text);font-size:.85rem;font-family:inherit;outline:none;transition:.2s;
+}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.search svg{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--text-faint)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{
+  padding:.42rem .8rem;border-radius:100px;border:1px solid var(--border-strong);background:var(--surface);
+  color:var(--text-muted);font-size:.78rem;font-weight:500;cursor:pointer;transition:.18s;font-family:inherit;
+}
+.chip:hover{color:var(--text);border-color:var(--border-strong);background:var(--surface-2)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+.count{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-faint);margin-left:auto;white-space:nowrap}
+
+/* ---------- FAQ list ---------- */
+main{padding:2.5rem 0 4rem}
+.group{margin-bottom:2.5rem}
+.group-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.group-head h2{font-size:1.15rem;margin:0;font-weight:600}
+.group-head .line{flex:1;height:1px;background:var(--border)}
+.group-head .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-faint)}
+.faq-item{border:1px solid var(--border);border-radius:12px;background:var(--surface);margin-bottom:.6rem;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:var(--border-strong)}
+.faq-item.open{border-color:rgba(182,255,60,.35)}
+.faq-q{
+  width:100%;display:flex;align-items:center;gap:1rem;text-align:left;background:none;border:0;
+  padding:1.05rem 1.15rem;color:var(--text);font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;
+}
+.faq-q:hover{color:var(--accent)}
+.faq-q .q{flex:1}
+.faq-q .chev{flex-shrink:0;color:var(--text-faint);transition:transform .25s}
+.faq-item.open .chev{transform:rotate(180deg);color:var(--accent)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.faq-a-in{padding:0 1.15rem 1.15rem;color:var(--text-muted);font-size:.9rem}
+.faq-a ul{margin:.6rem 0 0;padding-left:1.1rem}
+.faq-a li{margin-bottom:.35rem}
+.faq-a a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(182,255,60,.35)}
+.faq-a a:hover{border-bottom-color:var(--accent)}
+.faq-a code{font-family:'JetBrains Mono',monospace;font-size:.82em;background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:.1rem .35rem;color:var(--text)}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);border:1px solid rgba(182,255,60,.3);background:var(--accent-glow);border-radius:4px;padding:.15rem .4rem;margin-right:.5rem;vertical-align:middle}
+.empty{display:none;text-align:center;padding:3rem 1rem;border:1px dashed var(--border-strong);border-radius:12px;color:var(--text-muted)}
+.empty b{display:block;color:var(--text);margin-bottom:.35rem;font-family:'Space Grotesk',sans-serif}
+
+/* ---------- CTA ---------- */
+.cta{
+  position:relative;overflow:hidden;border:1px solid var(--border);border-radius:18px;
+  background:linear-gradient(135deg,var(--surface) 0%,#101a13 100%);padding:2.25rem;margin-top:3rem;
+}
+.cta:after{content:"";position:absolute;right:-90px;bottom:-120px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(182,255,60,.18),transparent 68%)}
+.cta h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin:.6rem 0 .6rem}
+.cta p{color:var(--text-muted);max-width:56ch;margin:0 0 1.4rem}
+.cta-actions{display:flex;flex-wrap:wrap;gap:.6rem;position:relative;z-index:2}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--border);background:var(--bg-soft);padding:2.75rem 0 0;margin-top:2rem}
+.f-cols{display:grid;gap:2rem;padding-bottom:2.25rem}
+@media(min-width:760px){.f-cols{grid-template-columns:1.3fr 1fr 1fr}}
+.f-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--text-faint);margin:0 0 .9rem}
+.f-list{list-style:none;margin:0;padding:0;font-size:.87rem}
+.f-list li{margin-bottom:.55rem;color:var(--text-muted)}
+.f-list a{text-decoration:none;color:var(--text-muted);transition:color .2s}
+.f-list a:hover{color:var(--accent)}
+.f-head{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.2}
+.socials{display:flex;gap:.5rem;margin-top:1rem}
+.socials a{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:.2s}
+.socials a:hover{color:var(--accent-ink);background:var(--accent);border-color:var(--accent)}
+.f-bottom{border-top:1px solid var(--border);padding:1rem 0;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text-faint)}
+.f-links{display:flex;gap:1.25rem}
+.f-links a{text-decoration:none;color:var(--text-faint);transition:color .2s}
+.f-links a:hover{color:var(--accent)}
+.f-links a.active{color:var(--accent)}
+.to-top{position:fixed;right:1.1rem;bottom:1.1rem;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);
+  background:var(--surface);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  opacity:0;pointer-events:none;transition:.25s;z-index:60}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:.75rem;background:var(--accent);color:var(--accent-ink);padding:.5rem .8rem;border-radius:6px;z-index:99;text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+
+<section class="hero">
+  <div class="dot-grid" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative">
+    <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span> sazzad@devfolio:~$ cat faq.md</p>
+    <h1>Frequently Asked <span class="accent">Questions</span></h1>
+    <p class="lede">
+      Everything clients usually ask before we start working together — what I build, how I work,
+      how pricing and timelines are handled, who owns the code afterwards, and what happens after launch.
+      If your question isn't here, message me directly and I'll answer it honestly.
+    </p>
+    <div class="hero-meta">
+      <span class="pill"><span class="d" aria-hidden="true"></span> <b>32</b> questions</span>
+      <span class="pill"><span class="d" aria-hidden="true"></span> Based in <b>Bakalia, Chittagong</b></span>
+      <span class="pill"><span class="d" aria-hidden="true"></span> Working <b>worldwide, remote</b></span>
+      <span class="pill"><span class="d" aria-hidden="true"></span> Replies in <b>~1 business day</b></span>
+    </div>
+  </div>
+</section>
+
+<div class="tools">
+  <div class="wrap tools-in">
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.7" y2="16.7"/></svg>
+      <input id="q" type="search" placeholder="Search questions…" aria-label="Search frequently asked questions" autocomplete="off">
+    </div>
+    <div class="chips" role="group" aria-label="Filter by category">
+      <button class="chip" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" data-cat="start" aria-pressed="false">Getting started</button>
+      <button class="chip" data-cat="tech" aria-pressed="false">Services &amp; technical</button>
+      <button class="chip" data-cat="process" aria-pressed="false">Process</button>
+      <button class="chip" data-cat="money" aria-pressed="false">Pricing &amp; payment</button>
+      <button class="chip" data-cat="after" aria-pressed="false">Ownership &amp; support</button>
+    </div>
+    <span class="count" id="count">32 of 32 shown</span>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- ============ GETTING STARTED ============ -->
+    <section class="group" data-group="start">
+      <div class="group-head">
+        <span class="num mono">01</span>
+        <h2>Getting started</h2>
+        <span class="line" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">
+          <span class="q">Are you available for new projects right now?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes — I keep a small number of active projects at a time so each one gets real attention.
+          The quickest way to find out about my current availability is to send a short message with
+          your project idea and target date. You'll get an honest answer, including "not right now" if
+          my schedule is full.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you work with international clients?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. I'm based in Chittagong, Bangladesh (<code>GMT+6</code>) and work remotely with clients in
+          Europe, the UK, the US, the Middle East and Australia. I work async-first — written updates,
+          shared documents and screenshots — with scheduled calls where a conversation is faster.
+          There is normally a comfortable overlap window with UK/EU afternoons and US mornings.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What's the best way to reach you?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Email is best for anything detailed: <a href="mailto:developer.sazzad.me@gmail.com">developer.sazzad.me@gmail.com</a>.
+          WhatsApp works well for quick questions: <a href="https://wa.me/8801877856951" target="_blank" rel="noopener">+880 1877-856951</a>.
+          The contact form on the <a href="../#contact">portfolio home page</a> lands in the same inbox.
+          Whichever you use, you'll hear back — usually within one business day.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you sign NDAs and confidentiality agreements?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes, gladly. Send yours, or I can sign a simple mutual NDA before we discuss details.
+          Under an NDA I also agree not to show the work in my portfolio, and I'll name it in
+          generic terms (industry and type of system) or omit it entirely — your call.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What languages do you work in?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          English and Bangla (বাংলা). All technical documentation, code comments and commit messages
+          are written in English so any future developer can pick the project up cleanly.
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES & TECHNICAL ============ -->
+    <section class="group" data-group="tech">
+      <div class="group-head">
+        <span class="num mono">02</span>
+        <h2>Services &amp; technical</h2>
+        <span class="line" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What services do you primarily offer?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          <span class="tag">Popular</span>
+          Full-stack web development, WordPress &amp; CMS solutions, web applications, REST APIs,
+          third-party integrations, e-commerce builds, and long-term technical maintenance.
+          I work across the full lifecycle — from planning to deployment and beyond.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What technologies do you actually work with day to day?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Frontend: HTML5, CSS3, JavaScript, responsive UI, AJAX — with React, Next.js and TypeScript
+          as growing skills. Backend: PHP, Laravel, WordPress, REST APIs, authentication — plus
+          Node.js/Express. Databases: MySQL and relational design, PostgreSQL. Platforms: WordPress,
+          WooCommerce, Moodle, plugin and CMS theme development. Infrastructure: Git/GitHub, cPanel,
+          DNS &amp; SSL, with Docker and CI/CD in progress. The full breakdown with depth levels is on
+          the <a href="../#stack">Technical Stack</a> section of my portfolio.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Can you take over an existing project or fix an inherited codebase?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes — this is a large part of what I do. I start with a short assessment: what the system does,
+          where it's fragile, what's documented, what's at risk. You receive that in writing before any
+          large piece of work begins, with a recommended order of fixes. If the honest answer is
+          "rebuilding is cheaper than patching", I'll tell you that too.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you build e-commerce sites and payment/courier integrations?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. WooCommerce stores, custom product/collection structures, checkout flows, order and
+          inventory logic, and integrations with payment gateways, courier and merchant platforms —
+          including the kind of multi-platform operational tooling I built for KHF Manage.
+          I also run my own e-commerce business, so I understand the business side of the checkout,
+          not just the code.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you handle hosting, domains, SSL, email and deployment?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. I can set up and manage hosting (shared/cPanel or VPS), point domains, install and renew
+          SSL, configure business email, set up staging environments, and handle the deployment itself —
+          or work inside your existing hosting account, using your own credentials, if you prefer to
+          keep everything in your name.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you build mobile apps, or just websites and web apps?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Native iOS/Android app development isn't my service. What I do build are
+          <strong>Progressive Web Apps (PWA)</strong> — installable, app-like experiences that work on
+          phones and desktops from one codebase, like KHF Manage. For most businesses a PWA covers the
+          requirement without the cost and maintenance of two native apps.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you also do UI/UX or graphic design?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          I implement frontend design at a high standard — including the design system this site uses —
+          and I can create a clean, practical interface for a business system where usability matters
+          more than branding. I don't offer brand identity or logo design; if you have a designer or
+          an existing brand, I'll build precisely to it.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you work with Moodle, LMS platforms and digital libraries?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. I've delivered Moodle-based learning environments — course and user management, enrolment
+          workflows, third-party API integrations — plus custom digital library and learning-resource
+          platforms. If you're migrating an existing course catalogue into an LMS, that's familiar ground.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Can you do SEO for my website?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Technical SEO — yes: clean site structure, semantic markup, metadata, sitemaps, page speed,
+          structured data and schema, and generative-engine optimisation (making a brand readable to
+          AI search systems, as I did for Malco Larra Del Pozo). Content marketing, link building and
+          ongoing campaign management are outside my scope.
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="group" data-group="process">
+      <div class="group-head">
+        <span class="num mono">03</span>
+        <h2>Process &amp; timelines</h2>
+        <span class="line" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How long does it take to see results?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Simple websites and landing pages: <strong>1–2 weeks</strong>. Complex web apps and integrated
+          platforms: <strong>4–8 weeks</strong> depending on scope. I always provide a timeline estimate
+          before starting.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How do you actually work — what's your process?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Eight stages, and I stay involved in all of them: <strong>Understand → Analyze → Plan → Build →
+          Integrate → Test → Deploy → Maintain</strong>. In practice that means I ask questions before
+          writing code, plan the structure in writing, build in reviewable stages, test on real devices,
+          deploy carefully, and don't disappear after launch.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do I get a written scope and estimate before work starts?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Always. Before any project you receive, in writing: what's included, what's excluded,
+          the deliverables, the timeline with milestones, the price and the assumptions it's based on.
+          The goal is simple — no surprises on either side, and no "I thought that was included" later.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How often will I hear from you during the project?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          You'll get a scheduled update at least once a week, plus a working demo or staging link at each
+          milestone so you can see progress instead of taking my word for it. For anything urgent you can
+          reach me directly on WhatsApp or email — you're never waiting weeks to find out what's happening.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How do you handle feedback and revisions?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Each milestone comes with a review point. Changes that refine what we agreed are part of the
+          work — fix them and move on, no argument. Changes that add something new to the scope are
+          quoted separately so you can decide with the cost in front of you.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Does my project need to be fully specified before we start?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          No. A problem description in plain language is enough to begin: what you do, what's painful
+          today, and what you want to be possible. I'll ask the questions that turn that into a
+          specification — that analysis is part of the job, not something you have to arrive with.
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="group" data-group="money">
+      <div class="group-head">
+        <span class="num mono">04</span>
+        <h2>Pricing &amp; payment</h2>
+        <span class="line" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How much does a project cost?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          It depends on scope, so I don't publish a price list that would be wrong for your project.
+          What I can promise is this: the consultation is free, you get a fixed written quote before
+          work starts, and that quote is based on real requirements rather than a guess. Small,
+          well-defined jobs are quoted as a flat task fee; larger builds are priced per milestone.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you take an advance payment?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes — projects typically start with an advance, followed by scheduled milestone payments,
+          with the balance due before final delivery and handover. The exact split is agreed in the
+          written scope, so both sides know the schedule from day one.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Which payment methods do you accept?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Within Bangladesh: bank transfer, bKash or Nagad. For international clients: bank/wire transfer
+          or another agreed method. Every payment is documented with an invoice or receipt, and
+          third-party costs (domain, hosting, licences, gateway fees) are billed at cost and listed
+          upfront — never buried in the price.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Are there any hidden costs?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          No. My development fee is what the quote says. The only additional costs are external ones you
+          own directly — hosting, domain renewal, paid plugins or licences, SMS/gateway charges — and
+          those are listed in the scope before you commit. If a requirement changes, you get a written
+          quote for the change before any extra work is done.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you offer monthly retainers or ongoing support plans?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. Some clients prefer a small monthly block of hours for fixes, improvements, backups,
+          monitoring and small feature work instead of paying per task. It's optional — plenty of
+          projects run perfectly well with per-task quotes after launch.
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ============ OWNERSHIP & SUPPORT ============ -->
+    <section class="group" data-group="after">
+      <div class="group-head">
+        <span class="num mono">05</span>
+        <h2>Ownership, handover &amp; support</h2>
+        <span class="line" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Who owns the code and content after delivery?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          You do. Once the project is complete and paid for, the code, design and content are yours —
+          including access to the hosting, database and repository. I keep no lock on your system.
+          The only exception is portfolio rights: I may reference the work as an example unless an
+          NDA says otherwise.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Do you provide maintenance after launch?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes. Every project includes a support window after launch for defects in the delivered work —
+          if something I built misbehaves, I fix it. Beyond that, ongoing maintenance, updates,
+          monitoring and new features are available as a retainer or on a per-task basis. A project isn't
+          finished at deploy; it needs care afterwards.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What happens if something breaks a year later?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Send me the detail and I'll diagnose it — usually quickly, since I built the system and know
+          where to look. If it's a bug in code I delivered, it's handled as a defect. If it's a hosting
+          change, a third-party service update, or an expired licence, I'll tell you exactly what
+          happened and quote the fix. Either way, you get clarity instead of a mystery.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Will you document the system and train my team to use it?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Yes, and this matters more than most developers admit. You get handover notes covering what was
+          built and how it's structured, plus a practical walkthrough of the admin panel for the people
+          who'll actually use it — recording included for larger systems. If your team can't run the
+          system confidently, the delivery isn't finished.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What if my project stops midway — can we pause?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Life happens and business priorities move — you can pause. Completed and approved milestones
+          are settled, the current state is documented and committed so nothing is lost, and we agree a
+          restart date. Long pauses (several months) mean re-quoting the remaining work, since the
+          environment, dependencies and requirements will have moved.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">What about my data, files and privacy?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Client files, credentials and databases are treated as confidential: access is limited to me,
+          stored securely, never shared or reused for other work, and removed from my systems when the
+          engagement ends (after an agreed retention period in case you need support). Exactly what I
+          collect on this website, why, and how long I keep it is set out in the
+          <a href="../privacy/">Privacy Policy</a>.
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">I'm not sure what I need yet — where do we start?</span>
+          <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-in">
+          Start by describing your problem or goal. I'll analyze the requirements and propose the best
+          technical approach — whether that's a custom build, a platform integration, or an existing
+          solution configured for your needs. The consultation is free and there's no obligation to
+          continue afterwards.
+        </div></div>
+      </div>
+    </section>
+
+    <div class="empty" id="empty">
+      <b>Nothing matched that search.</b>
+      Try a different word, or clear the filter — and if your question genuinely isn't here,
+      <a href="../#contact" class="accent">ask me directly</a>.
+    </div>
+
+    <section class="cta">
+      <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span> Have any question</p>
+      <h2>Still not answered? <span class="accent">Let's talk.</span></h2>
+      <p>
+        A short message is enough — tell me what you're building, what's stuck, and what a good outcome
+        looks like. You'll get an honest reply (usually within one business day) with a clear next step.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="../#contact">
+          Send a message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="mailto:developer.sazzad.me@gmail.com">developer.sazzad.me@gmail.com</a>
+        <a class="btn btn-ghost" href="https://wa.me/8801877856951" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+ 
+<script>
+(function(){
+  "use strict";
+  var items   = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+  var groups  = Array.prototype.slice.call(document.querySelectorAll('.group'));
+  var chips   = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var input   = document.getElementById('q');
+  var counter = document.getElementById('count');
+  var empty   = document.getElementById('empty');
+  var activeCat = 'all';
+
+  /* ---- accordion ---- */
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    function setOpen(open){
+      item.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.maxHeight = open ? (panel.scrollHeight + 24) + 'px' : '0px';
+    }
+    setOpen(item.classList.contains('open'));
+    btn.addEventListener('click', function(){
+      var willOpen = !item.classList.contains('open');
+      /* accordion behaviour within a group */
+      Array.prototype.slice.call(item.parentNode.querySelectorAll('.faq-item.open')).forEach(function(o){
+        if(o !== item){
+          o.classList.remove('open');
+          o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+          o.querySelector('.faq-a').style.maxHeight = '0px';
+        }
+      });
+      setOpen(willOpen);
+    });
+    window.addEventListener('resize', function(){
+      if(item.classList.contains('open')) panel.style.maxHeight = (panel.scrollHeight + 24) + 'px';
+    });
+  });
+
+  /* ---- search + category filter ---- */
+  function apply(){
+    var term = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    groups.forEach(function(group){
+      var groupShown = 0;
+      Array.prototype.slice.call(group.querySelectorAll('.faq-item')).forEach(function(item){
+        var catOk = (activeCat === 'all' || group.getAttribute('data-group') === activeCat);
+        var textOk = !term || item.textContent.toLowerCase().indexOf(term) !== -1;
+        var visible = catOk && textOk;
+        item.style.display = visible ? '' : 'none';
+        if(visible){ shown++; groupShown++; }
+      });
+      group.style.display = groupShown ? '' : 'none';
+    });
+    counter.textContent = shown + ' of ' + items.length + ' shown';
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      chip.setAttribute('aria-pressed','true');
+      activeCat = chip.getAttribute('data-cat');
+      apply();
+    });
+  });
+  input.addEventListener('input', apply);
+  apply(); /* initialise the counter on load */
+
+  /* open the matching question when arriving with a search in the URL: /faq/?q=pricing */
+  var urlQ = new URLSearchParams(window.location.search).get('q');
+  if(urlQ){ input.value = urlQ; apply(); }
+
+  /* ---- back to top ---- */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    toTop.classList.toggle('show', window.scrollY > 400);
+  }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
